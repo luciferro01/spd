@@ -1,7 +1,6 @@
 import 'dart:async';
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:get/route_manager.dart';
-import './utils/colors.dart';
 import 'utils/routes.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -24,27 +23,19 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   void dispose() {
-    // timer;
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        color: mainColor,
+    return CupertinoPageScaffold(
+      child: SizedBox(
         width: double.infinity,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Image.asset(
-            //   "spd.png",
-            //   width: MediaQuery.of(context).size.width * 0.4,
-            //   // height: 200,
-            //   // width: 200,
-            // ),
-            Image(image: AssetImage('assets/spd.png')),
+            const Image(image: AssetImage('assets/spd.png')),
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.04,
             ),

@@ -1,3 +1,4 @@
 import 'package:flutter/material.dart';
 
-Color mainColor = Colors.black;
+const Color softwhite = Color(0xfffbfaf5);
+const Color softBlack = Color(0xff181a18);
