@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/route_manager.dart';
-import 'package:spd/onboarding_screen.dart';
-import './utils/routes.dart';
+import 'package:spd/onboarding_screen/screens/onboarding_screen.dart';
+import 'constants/routes.dart';
 
 import 'splash_screen.dart';
 
@@ -23,6 +23,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetCupertinoApp(
       theme: const CupertinoThemeData(
+        textTheme: CupertinoTextThemeData(
+          textStyle: TextStyle(
+            fontFamily: 'proxima-soft',
+            color: Colors.black87,
+          ),
+        ),
         brightness: Brightness.light,
       ),
       debugShowCheckedModeBanner: false,
@@ -35,7 +41,7 @@ class MyApp extends StatelessWidget {
         ),
         GetPage(
           name: Routes.onboardingScreen,
-          page: () => const OnBoardingScreen(),
+          page: () => OnBoardingScreen(),
           transition: Transition.circularReveal,
           transitionDuration: const Duration(milliseconds: 1500),
         ),

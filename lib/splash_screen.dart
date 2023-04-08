@@ -1,7 +1,9 @@
 import 'dart:async';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
-import 'utils/routes.dart';
+import 'constants/routes.dart';
+import 'constants/image_strings.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -35,7 +37,7 @@ class _SplashScreenState extends State<SplashScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset("assets/logo/super_app_logo.png", scale: 2.3),
+            Image.asset(logo, scale: 2.3),
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.04,
             ),
@@ -45,8 +47,9 @@ class _SplashScreenState extends State<SplashScreen> {
                 "Super App",
                 style: TextStyle(
                   fontSize: 30,
+                  color: Colors.black,
                   fontStyle: FontStyle.italic,
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w800,
                 ),
               ),
             )
