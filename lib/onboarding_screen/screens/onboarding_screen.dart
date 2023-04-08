@@ -81,29 +81,91 @@ class OnBoardingScreen extends StatelessWidget {
             ),
             enableSideReveal: true,
           ),
-          Positioned(
-            bottom: size.height * 0.14,
-            child: GestureDetector(
-              onTap: () {
-                _controller.skipAction(data.length);
-              },
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  shape: BoxShape.circle,
-                  border: Border.all(
-                    color: Colors.black,
-                    width: 3,
-                  ),
-                ),
-                height: size.height * 0.08,
-                width: size.height * 0.08,
-                child: const Icon(
-                  CupertinoIcons.chevron_forward,
-                ),
-              ),
+          Obx(
+            () => Positioned(
+              bottom: size.height * 0.14,
+              child: _controller.currentPage.value < (data.length - 1)
+                  ? GestureDetector(
+                      onTap: () {
+                        _controller.skipAction(data.length);
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          shape: BoxShape.circle,
+                          border: Border.all(
+                            color: Colors.black,
+                            width: 3,
+                          ),
+                        ),
+                        height: size.height * 0.08,
+                        width: size.height * 0.08,
+                        child: const Icon(
+                          CupertinoIcons.chevron_forward,
+                        ),
+                      ),
+                    )
+                  : GestureDetector(
+                      onTap: () {
+                        _controller.logInButton();
+                      },
+                      child: Container(
+                        alignment: Alignment.center,
+                        height: size.height * 0.06,
+                        width: size.width * 0.3,
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.black, width: 3),
+                          shape: BoxShape.rectangle,
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.white,
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: const [
+                            Text(
+                              'Log In',
+                              style: TextStyle(fontSize: 30),
+                            ),
+                            Icon(
+                              CupertinoIcons.chevron_forward,
+                              color: Colors.black,
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
             ),
           ),
+          // : Positioned(
+          // bottom: size.height * 0.14,
+          // child:
+          // Container(
+          //   alignment: Alignment.center,
+          //   height: size.height * 0.06,
+          //   width: size.width * 0.3,
+          //   decoration: BoxDecoration(
+          //     border: Border.all(color: Colors.black, width: 3),
+          //     shape: BoxShape.rectangle,
+          //     borderRadius: BorderRadius.circular(10),
+          //     color: Colors.white,
+          //   ),
+          //   child: Row(
+          //     mainAxisAlignment: MainAxisAlignment.center,
+          //     crossAxisAlignment: CrossAxisAlignment.center,
+          //     children: const [
+          //       Text(
+          //         'Log In',
+          //         style: TextStyle(fontSize: 30),
+          //       ),
+          //       Icon(
+          //         CupertinoIcons.chevron_forward,
+          //         color: Colors.black,
+          //       )
+          //     ],
+          //   ),
+          // ),
+          // ),
           Obx(
             () => Positioned(
               bottom: size.height * 0.09,

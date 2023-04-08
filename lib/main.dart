@@ -2,9 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/route_manager.dart';
+import 'package:spd/authentication/screens/authentication.dart';
 import 'package:spd/onboarding_screen/screens/onboarding_screen.dart';
 import 'constants/routes.dart';
 
+// import 'error/error_screen.dart';
 import 'splash_screen.dart';
 
 void main() {
@@ -45,6 +47,19 @@ class MyApp extends StatelessWidget {
           transition: Transition.circularReveal,
           transitionDuration: const Duration(milliseconds: 1500),
         ),
+        GetPage(
+          name: Routes.authentication,
+          page: () => const AuthenticationScreen(),
+          transition: Transition.rightToLeft,
+          transitionDuration: const Duration(milliseconds: 1000),
+        ),
+        // GetPage(
+        //   name: Routes.ErrorScreen,
+        //   unknownRoute: GetPage(
+        //     name: Routes.ErrorScreen,
+        //     page: () => ErrorScreen(),
+        //   ),
+        // )
       ],
       home: const SplashScreen(),
     );
