@@ -1,37 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:liquid_swipe/liquid_swipe.dart';
-import '../../constants/image_strings.dart';
-import '../models/item_data.dart';
+import '../data/item_data.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import '../controller/onb_screen_controller.dart';
 
-class OnBoardingScreen extends StatefulWidget {
+class OnBoardingScreen extends StatelessWidget {
   OnBoardingScreen({super.key});
-
-  @override
-  State<OnBoardingScreen> createState() => _OnBoardingScreenState();
-}
-
-class _OnBoardingScreenState extends State<OnBoardingScreen> {
-  List<ItemData> data = [
-    ItemData(
-        image: onbScreen1,
-        bgColor: Colors.amber,
-        descriptionText: 'A one stop solution of all the apps you need',
-        headingText: 'Welome to the Super App'),
-    ItemData(
-        image: onbScreen2,
-        bgColor: Colors.green,
-        descriptionText: 'Conatains all the Apps you need in your daily life',
-        headingText: 'Productive'),
-    ItemData(
-        image: onbScreen3,
-        bgColor: Colors.yellow,
-        descriptionText: 'So are you ready to deep dive into this app',
-        headingText: 'Dive into it'),
-  ];
-  LiquidController controller = LiquidController();
-  int currentPage = 0;
+  final OnbScreenController _controller = OnbScreenController();
 
   @override
   Widget build(BuildContext context) {
@@ -42,8 +19,8 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
         children: [
           LiquidSwipe.builder(
             enableLoop: false,
-            onPageChangeCallback: currentPageChangeCallback,
-            liquidController: controller,
+            onPageChangeCallback: _controller.onPageChangeCallback,
+            liquidController: _controller.controller,
             itemBuilder: ((context, index) {
               return Container(
                 padding: const EdgeInsets.symmetric(
@@ -108,9 +85,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
             bottom: size.height * 0.14,
             child: GestureDetector(
               onTap: () {
-                setState(() {
-                  controller.jumpToPage(page: data.length - 1);
-                });
+                _controller.skipAction(data.length);
               },
               child: Container(
                 decoration: BoxDecoration(
@@ -129,22 +104,18 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
               ),
             ),
           ),
-          Positioned(
-            bottom: size.height * 0.09,
-            child: AnimatedSmoothIndicator(
-              activeIndex: controller.currentPage,
-              count: data.length,
-              effect: const ExpandingDotsEffect(),
+          Obx(
+            () => Positioned(
+              bottom: size.height * 0.09,
+              child: AnimatedSmoothIndicator(
+                activeIndex: _controller.currentPage.value,
+                count: data.length,
+                effect: const ExpandingDotsEffect(),
+              ),
             ),
           )
         ],
       ),
     );
-  }
-
-  void currentPageChangeCallback(int activePageIndex) {
-    setState(() {
-      currentPage = activePageIndex;
-    });
   }
 }
