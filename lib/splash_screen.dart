@@ -35,14 +35,14 @@ class _SplashScreenState extends State<SplashScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Image(image: AssetImage('assets/spd.png')),
+            Image.asset("assets/logo/super_app_logo.png", scale: 2.3),
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.04,
             ),
             const Hero(
               tag: 'App Name',
               child: Text(
-                "SPD",
+                "Super App",
                 style: TextStyle(
                   fontSize: 30,
                   fontStyle: FontStyle.italic,

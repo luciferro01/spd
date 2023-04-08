@@ -12,7 +12,7 @@ class OnBoardingScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: const [
-            Text('Power Rangers SPD'),
+            Text('Super App'),
             Icon(CupertinoIcons.shopping_cart)
           ],
         ),

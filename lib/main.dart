@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetCupertinoApp(
       theme: const CupertinoThemeData(
-        brightness: Brightness.dark,
+        brightness: Brightness.light,
       ),
       debugShowCheckedModeBanner: false,
       getPages: [
