@@ -9,12 +9,17 @@ class AuthenticationScreen extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     return CupertinoPageScaffold(
       child: Stack(
+        alignment: Alignment.,
         children: [
-          Container(
-            height: size.height * 1.0,
-            decoration: BoxDecoration(
-              color: Colors.amber,
-              borderRadius: BorderRadius.circular(size.height * 0.2),
+          Transform.rotate(
+            angle: -0.8,
+            child: Container(
+              height: size.height * 1.0,
+              width: size.height * 1.0,
+              decoration: BoxDecoration(
+                color: Colors.amber,
+                borderRadius: BorderRadius.circular(size.height * 0.1),
+              ),
             ),
           ),
         ],
