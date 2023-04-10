@@ -49,17 +49,10 @@ class MyApp extends StatelessWidget {
         ),
         GetPage(
           name: Routes.authentication,
-          page: () => const AuthenticationScreen(),
+          page: () => AuthenticationScreen(),
           transition: Transition.rightToLeft,
-          transitionDuration: const Duration(milliseconds: 1000),
+          transitionDuration: const Duration(milliseconds: 500),
         ),
-        // GetPage(
-        //   name: Routes.ErrorScreen,
-        //   unknownRoute: GetPage(
-        //     name: Routes.ErrorScreen,
-        //     page: () => ErrorScreen(),
-        //   ),
-        // )
       ],
       home: const SplashScreen(),
     );
