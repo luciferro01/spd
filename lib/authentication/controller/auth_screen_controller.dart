@@ -1,20 +1,44 @@
-// import 'package:flutter/cupertino.dart';
-// import 'package:get/get.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:get/get_core/get_core.dart';
+import 'package:get/get_navigation/src/extension_navigation.dart';
+import 'package:get/get_navigation/src/snackbar/snackbar.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:get/get_utils/src/extensions/export.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
-// class AuthScreenController extends GetxController
-//     with GetSingleTickerProviderStateMixin {
-//   RxDouble value = 0.0.obs;
-//   late final AnimationController _animationController = AnimationController(
-//     vsync: this,
-//     duration: const Duration(seconds: 4),
-//     lowerBound: 0.0,
-//     upperBound: 30.0,
-//   );
-//   late final Animation<double> controller = CurvedAnimation(
-//     parent: _animationController,
-//     curve: Curves.easeInOutCubic,
-//   );
-//   void init() {
-//     value.value = controller.value;
-//   }
-// }
+class AuthScreenController extends GetxController {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  GoogleSignIn googleSignIn = GoogleSignIn();
+
+  signIn() async {
+    try {
+      final GoogleSignInAccount? googleSignInAccount =
+          await googleSignIn.signIn();
+      if (googleSignInAccount != null) {
+        final GoogleSignInAuthentication googleSignInAuthentication =
+            await googleSignInAccount.authentication;
+        if (googleSignInAuthentication.accessToken != null &&
+            googleSignInAuthentication.idToken != null) {
+          final AuthCredential credential = GoogleAuthProvider.credential(
+              accessToken: googleSignInAuthentication.accessToken,
+              idToken: googleSignInAuthentication.idToken);
+          try {
+            _auth.signInWithCredential(credential);
+            // await auth_auth.signInWithCredential(credential);
+          } on FirebaseAuthException catch (e) {
+            Get.snackbar('auth.signUpErrorTitle'.tr, e.message!,
+                snackPosition: SnackPosition.BOTTOM,
+                duration: const Duration(seconds: 10),
+                backgroundColor: Get.theme.snackBarTheme.backgroundColor,
+                colorText: Get.theme.snackBarTheme.actionTextColor);
+            //ignore: avoid_print
+            print(e);
+          }
+        }
+      }
+    } catch (e) {
+      //ignore: avoid_print
+      print(e);
+    }
+  }
+}
