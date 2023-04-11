@@ -7,7 +7,7 @@ import 'package:spd/onboarding_screen/screens/onboarding_screen.dart';
 import 'constants/routes.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
-// import 'error/error_screen.dart';
+import 'error/error_screen.dart';
 import 'splash_screen.dart';
 
 void main() async {
@@ -61,6 +61,11 @@ class MyApp extends StatelessWidget {
           transitionDuration: const Duration(milliseconds: 500),
         ),
       ],
+      unknownRoute: GetPage(
+        name: Routes.errorScreen,
+        page: () => ErrorScreen(),
+        transition: Transition.cupertino,
+      ),
       home: const SplashScreen(),
     );
   }
