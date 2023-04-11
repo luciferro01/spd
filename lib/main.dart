@@ -8,7 +8,7 @@ import 'constants/routes.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'error/error_screen.dart';
-import 'splash_screen.dart';
+import 'splash_screen/screens/splash_screen.dart';
 
 void main() async {
   // Widgets
@@ -44,7 +44,7 @@ class MyApp extends StatelessWidget {
       getPages: [
         GetPage(
           name: Routes.splashScreen,
-          page: () => const SplashScreen(),
+          page: () => SplashScreen(),
           transition: Transition.circularReveal,
           transitionDuration: const Duration(milliseconds: 2000),
         ),
@@ -64,9 +64,9 @@ class MyApp extends StatelessWidget {
       unknownRoute: GetPage(
         name: Routes.errorScreen,
         page: () => ErrorScreen(),
-        transition: Transition.cupertino,
+        // transition: Transition.cupertino,
       ),
-      home: const SplashScreen(),
+      home: SplashScreen(),
     );
   }
 }
