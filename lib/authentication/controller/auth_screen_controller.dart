@@ -24,6 +24,9 @@ class AuthScreenController extends GetxController {
               idToken: googleSignInAuthentication.idToken);
           try {
             _auth.signInWithCredential(credential);
+            //ignore: avoid_print
+            print(
+                'User Signed In with ${_auth.currentUser?.email} and ${_auth.currentUser?.displayName}');
             // await auth_auth.signInWithCredential(credential);
           } on FirebaseAuthException catch (e) {
             Get.snackbar('auth.signUpErrorTitle'.tr, e.message!,

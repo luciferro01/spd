@@ -1,32 +1,12 @@
-import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/route_manager.dart';
-import 'constants/routes.dart';
-import 'constants/image_strings.dart';
+import 'package:get/get.dart';
+import '../../constants/image_strings.dart';
+import '../controller/splash_screen_controller.dart';
 
-class SplashScreen extends StatefulWidget {
-  const SplashScreen({super.key});
-
-  @override
-  State<SplashScreen> createState() => _SplashScreenState();
-}
-
-class _SplashScreenState extends State<SplashScreen> {
-  late Timer timer;
-  @override
-  void initState() {
-    Future.delayed(
-      const Duration(seconds: 2),
-      () => Get.offNamed(Routes.onboardingScreen),
-    );
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-  }
+class SplashScreen extends StatelessWidget {
+  SplashScreen({super.key});
+  var controller = Get.put(SplashScreenController());
 
   @override
   Widget build(BuildContext context) {
