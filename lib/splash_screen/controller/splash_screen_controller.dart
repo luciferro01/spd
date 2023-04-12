@@ -7,7 +7,7 @@ class SplashScreenController extends GetxController {
   RxBool isLoggedIn = false.obs;
   FirebaseAuth firebaseAuth = FirebaseAuth.instance;
 
-// I can also use Init Function but I think not necessary will remove it during the production and release time
+// I can also use Init Function but I think not necessary, will remove it during the production and release time
   // @override
   // void onInit() async {
   //   ever(isLoggedIn, handleAuthStateChanges);
@@ -30,7 +30,9 @@ class SplashScreenController extends GetxController {
 
   handleAuthStateChanges(signIn) {
     if (signIn) {
-      Get.offNamed(Routes.errorScreen, arguments: firebaseAuth.currentUser);
+      Get.offNamed(Routes.homeScreen);
+      // Get.offNamed(Routes.chatGpt);
+      // Get.offNamed(Routes.errorScreen, arguments: firebaseAuth.currentUser);
     } else {
       Future.delayed(
         const Duration(milliseconds: 1500),

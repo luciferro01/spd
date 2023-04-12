@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/route_manager.dart';
 import 'package:spd/authentication/screens/authentication.dart';
+import 'package:spd/gpt_assistant/chat_gpt/screens/chat_gpt_screen.dart';
+import 'package:spd/homeScreen/screens/homeScreen.dart';
 import 'package:spd/onboarding_screen/screens/onboarding_screen.dart';
 import 'constants/routes.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -57,6 +59,18 @@ class MyApp extends StatelessWidget {
         GetPage(
           name: Routes.authentication,
           page: () => AuthenticationScreen(),
+          transition: Transition.rightToLeft,
+          transitionDuration: const Duration(milliseconds: 500),
+        ),
+        GetPage(
+          name: Routes.chatGpt,
+          page: () => ChatGpt(),
+          transition: Transition.rightToLeft,
+          transitionDuration: const Duration(milliseconds: 500),
+        ),
+        GetPage(
+          name: Routes.homeScreen,
+          page: () => HomeScreen(),
           transition: Transition.rightToLeft,
           transitionDuration: const Duration(milliseconds: 500),
         ),

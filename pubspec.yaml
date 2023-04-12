@@ -40,6 +40,9 @@ dependencies:
   google_sign_in: ^6.1.0
   firebase_core: ^2.9.0
   firebase_auth: ^4.4.0
+  dio: ^5.1.1
+  http: ^0.13.5
+  flutter_card_swiper: ^4.1.2
 
 dev_dependencies:
   flutter_test:
