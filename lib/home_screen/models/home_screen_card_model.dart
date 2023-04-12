@@ -87,7 +87,7 @@ class HomeScreenCards extends StatelessWidget {
                       ),
                       Text(
                         descriptionText,
-                        style: const TextStyle(fontSize: 20),
+                        style: const TextStyle(fontSize: 16),
                       )
                     ],
                   ),
