@@ -5,4 +5,5 @@ class Routes {
   static const String errorScreen = "/ErrorScreen";
   static const String chatGpt = "/ChatGpt";
   static const String homeScreen = "/HomeScreen";
+  static const String gradientApp = "/GradientApp";
 }
