@@ -1,30 +1,76 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_card_swiper/flutter_card_swiper.dart';
 import 'package:spd/constants/image_strings.dart';
 import 'package:spd/homeScreen/models/home_screen_card_model.dart';
-
+import '../../constants/gradients.dart';
 import '../../constants/routes.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
 
-  List cards = [
-    HomeScreenCards(
+  final List cards = [
+    const HomeScreenCards(
         image: onbScreen1,
-        appName: 'TimePass',
+        appName: 'Tic Tac Toe',
         route: Routes.splashScreen,
+        gradient: Gradients.happyFisher,
         descriptionText: 'Hello'),
-    Container(
-      alignment: Alignment.center,
-      child: const Text('2'),
-      color: Colors.red,
+    const HomeScreenCards(
+      image: onbScreen2,
+      appName: 'Tic Tac Toe',
+      route: Routes.splashScreen,
+      descriptionText: 'Hello',
+      gradient: Gradients.passionateRed,
     ),
-    Container(
-      alignment: Alignment.center,
-      child: const Text('3'),
-      color: Colors.purple,
-    )
+    const HomeScreenCards(
+      image: onbScreen3,
+      appName: 'Tic Tac Toe',
+      route: Routes.splashScreen,
+      descriptionText: 'Hello',
+      gradient: Gradients.aquaSplash,
+    ),
+    const HomeScreenCards(
+      image: onbScreen3,
+      appName: 'Tic Tac Toe',
+      route: Routes.splashScreen,
+      descriptionText: 'Hello',
+      gradient: Gradients.eternalConstance,
+    ),
+    const HomeScreenCards(
+      image: onbScreen3,
+      appName: 'Tic Tac Toe',
+      route: Routes.splashScreen,
+      descriptionText: 'Hello',
+      gradient: Gradients.healthyWater,
+    ),
+    const HomeScreenCards(
+      image: onbScreen3,
+      appName: 'Tic Tac Toe',
+      route: Routes.splashScreen,
+      descriptionText: 'Hello',
+      gradient: Gradients.morningSalad,
+    ),
+    const HomeScreenCards(
+      image: onbScreen3,
+      appName: 'Tic Tac Toe',
+      route: Routes.splashScreen,
+      descriptionText: 'Hello',
+      gradient: Gradients.nightSky,
+    ),
+    const HomeScreenCards(
+      image: onbScreen3,
+      appName: 'Tic Tac Toe',
+      route: Routes.splashScreen,
+      descriptionText: 'Hello',
+      gradient: Gradients.gentleCare,
+    ),
+    const HomeScreenCards(
+      image: onbScreen3,
+      appName: 'Tic Tac Toe',
+      route: Routes.splashScreen,
+      descriptionText: 'Hello',
+      gradient: Gradients.viciousStance,
+    ),
   ];
 
   @override
@@ -38,23 +84,6 @@ class HomeScreen extends StatelessWidget {
           style: TextStyle(fontSize: 25),
         ),
       ),
-      // child: Column(
-      //   mainAxisAlignment: MainAxisAlignment.center,
-      //   crossAxisAlignment: CrossAxisAlignment.center,
-      //   children: [
-      //     Container(
-      //       margin: EdgeInsets.symmetric(
-      //         horizontal: width * 0.1,
-      //         // vertical: height * 0.0,
-      //       ),
-      //       height: height * 0.6,
-      //       decoration: BoxDecoration(
-      //         borderRadius: BorderRadius.circular(30),
-      //         color: Colors.amber,
-      //       ),
-      //     )
-      //   ],
-      // )
       child: Container(
         margin: EdgeInsets.only(
             left: 10, right: 10, top: height * 0.12, bottom: height * 0.1),
