@@ -6,7 +6,7 @@ import 'package:spd/error/error_screen_controller.dart';
 
 class ErrorScreen extends StatelessWidget {
   ErrorScreen({super.key});
-  var controller = Get.put(ErrorScreenController());
+  final controller = Get.put(ErrorScreenController());
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(

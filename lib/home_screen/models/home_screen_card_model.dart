@@ -1,8 +1,6 @@
-import 'package:get/get_navigation/src/routes/default_transitions.dart';
 import 'package:get/route_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:spd/constants/colors.dart';
-// import 'package:spd/splash_screen/screens/splash_screen.dart';
 
 class HomeScreenCards extends StatelessWidget {
   final String image;
