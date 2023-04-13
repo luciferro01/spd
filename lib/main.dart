@@ -16,6 +16,7 @@ import 'splash_screen/screens/splash_screen.dart';
 void main() async {
   // Widgets
   WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
@@ -61,23 +62,23 @@ class MyApp extends StatelessWidget {
           name: Routes.authentication,
           page: () => AuthenticationScreen(),
           transition: Transition.rightToLeft,
-          transitionDuration: const Duration(milliseconds: 500),
+          transitionDuration: const Duration(milliseconds: 1500),
         ),
         GetPage(
           name: Routes.chatGpt,
           page: () => ChatGpt(),
           transition: Transition.rightToLeft,
-          transitionDuration: const Duration(milliseconds: 500),
+          transitionDuration: const Duration(milliseconds: 1500),
         ),
         GetPage(
           name: Routes.homeScreen,
           page: () => HomeScreen(),
-          transition: Transition.rightToLeft,
-          transitionDuration: const Duration(milliseconds: 500),
+          transition: Transition.native,
+          transitionDuration: const Duration(milliseconds: 1000),
         ),
         GetPage(
           name: Routes.gradientApp,
-          page: () => GradientApp(),
+          page: () => const GradientApp(),
           transition: Transition.rightToLeft,
           transitionDuration: const Duration(milliseconds: 500),
         ),

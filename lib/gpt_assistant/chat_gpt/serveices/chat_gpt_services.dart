@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import '../../../constants/api_key.dart';
 
@@ -24,7 +25,8 @@ class ChatGptServices extends GetConnect {
     if (res.statusCode == 200) {
       String content = jsonDecode(res.body)['choices'][0]['message']['content'];
       content = content.trim();
-      print(content);
+      debugPrint(content);
+
       return content;
     }
   }

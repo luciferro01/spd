@@ -3,10 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:spd/gpt_assistant/chat_gpt/controller/chat_gpt_controller.dart';
 
-import '../serveices/chat_gpt_services.dart';
-
 class ChatGpt extends StatelessWidget {
-  var controller = Get.put(ChatGptController());
+  final controller = Get.put(ChatGptController());
   String prompt = "";
   ChatGpt({super.key});
   // TextEditingController textEditingController = TextEditingController();
@@ -92,7 +90,7 @@ class ChatGpt extends StatelessWidget {
                   // await ChatGptServices()
                   //     .chatGptResponse(textEditingController.text);
                   controller.chatGptResponse(prompt);
-                  print('Button Pressed');
+                  debugPrint('Button Pressed');
                 }),
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 4),
             style: const TextStyle(fontSize: 24),

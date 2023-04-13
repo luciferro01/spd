@@ -12,7 +12,7 @@ class ChatGptController extends GetxController {
 
   Future chatGptResponse(String prompt) async {
     messages.add({'role': 'user', 'content': prompt});
-    print(messages);
+    debugPrint('$messages');
     try {
       var res = await http.post(
         Uri.parse(https),
@@ -25,16 +25,16 @@ class ChatGptController extends GetxController {
           "messages": messages,
         }),
       );
-      print(res.statusCode);
+      debugPrint(res.statusCode.toString());
       if (res.statusCode == 200) {
         String content =
             jsonDecode(res.body)['choices'][0]['message']['content'];
         // content = content.trim();
-        print(content);
+        debugPrint(content);
         return content;
       }
     } catch (e) {
-      print(e);
+      debugPrint(e.toString());
     }
   }
 }
