@@ -26,6 +26,7 @@ class GradientApp extends StatelessWidget {
               mainAxisSpacing: width * 0.05,
               crossAxisSpacing: width * 0.03),
           itemBuilder: ((context, index) => GradientAppModel(
+                index: index,
                 height: height * 0.17,
                 gradient: gradients[index]['colorList'],
                 graadientName: gradients[index]['gradientName'],
