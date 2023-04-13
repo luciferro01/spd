@@ -1,20 +1,23 @@
 import 'package:get/route_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:spd/constants/colors.dart';
+import '../../constants/apps.dart';
 
 class HomeScreenCards extends StatelessWidget {
   final String image;
-  final String appName;
+  // final String appName;
   final String route;
-  final String descriptionText;
+  // final String descriptionText;
   final List<Color> gradient;
+  final int index;
   const HomeScreenCards(
       {super.key,
       required this.image,
-      required this.appName,
+      // required this.appName,
       required this.route,
-      required this.descriptionText,
-      required this.gradient});
+      // required this.descriptionText,
+      required this.gradient,
+      required this.index});
 
   @override
   Widget build(BuildContext context) {
@@ -77,16 +80,23 @@ class HomeScreenCards extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        appName,
+                        // appsappName[index],
+                        appList[index]['appName'],
                         style: const TextStyle(
                           fontSize: 25,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
+                      // FittedBox(
+                      //   child:
                       Text(
-                        descriptionText,
+                        appList[index]['description'],
+                        softWrap: true,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
                         style: const TextStyle(fontSize: 16),
-                      )
+                      ),
+                      // )
                     ],
                   ),
                 ),
