@@ -28,4 +28,9 @@ const List appList = [
     'appName': 'QR Scanner & Generator',
     'description': 'Still scanning QR through Paytm 🥱 now no more',
   },
+  {
+    'appName': 'Youtube Playlist Length Calculator',
+    'description':
+        'Cover entire syllabus in one night 😅 take a look how much time would it take',
+  },
 ];

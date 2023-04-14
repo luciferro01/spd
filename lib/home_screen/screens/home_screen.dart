@@ -51,14 +51,12 @@ class HomeScreen extends StatelessWidget {
       route: Routes.splashScreen,
       gradient: Gradients.nightSky,
     ),
-
-    // const HomeScreenCards(
-    //   image: onbScreen3,
-    //   appName: 'Tic Tac Toe',
-    //   route: Routes.splashScreen,
-    //   descriptionText: 'Hello',
-    //   gradient: Gradients.gentleCare,
-    // ),
+    const HomeScreenCards(
+      index: 7,
+      image: onbScreen2,
+      route: Routes.ytLengthCalculator,
+      gradient: Gradients.gentleCare,
+    ),
     // const HomeScreenCards(
     //   image: onbScreen3,
     //   appName: 'Tic Tac Toe',
