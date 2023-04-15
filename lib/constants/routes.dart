@@ -6,4 +6,5 @@ class Routes {
   static const String chatGpt = "/ChatGpt";
   static const String homeScreen = "/HomeScreen";
   static const String gradientApp = "/GradientApp";
+  static const String ytLengthCalculator = "/YtLengthCalculator";
 }

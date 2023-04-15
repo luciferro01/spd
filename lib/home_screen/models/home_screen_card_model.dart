@@ -82,6 +82,9 @@ class HomeScreenCards extends StatelessWidget {
                       Text(
                         // appsappName[index],
                         appList[index]['appName'],
+                        softWrap: true,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
                         style: const TextStyle(
                           fontSize: 25,
                           fontWeight: FontWeight.w600,

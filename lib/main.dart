@@ -12,6 +12,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'error/error_screen.dart';
 import 'splash_screen/screens/splash_screen.dart';
+import 'youtube_playlist_length_calculator/screens/yt_len_cal.dart';
 
 void main() async {
   // Widgets
@@ -79,6 +80,12 @@ class MyApp extends StatelessWidget {
         GetPage(
           name: Routes.gradientApp,
           page: () => const GradientApp(),
+          transition: Transition.rightToLeft,
+          transitionDuration: const Duration(milliseconds: 500),
+        ),
+        GetPage(
+          name: Routes.ytLengthCalculator,
+          page: () => YtLengthCalculator(),
           transition: Transition.rightToLeft,
           transitionDuration: const Duration(milliseconds: 500),
         ),
