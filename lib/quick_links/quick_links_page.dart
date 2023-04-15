@@ -1,7 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:spd/quick_links/screens/main/main_screen.dart';
 
 class QuickLinksPage extends StatefulWidget {
@@ -14,9 +11,8 @@ class QuickLinksPage extends StatefulWidget {
 class _QuickLinksPageState extends State<QuickLinksPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: MainScreen(),
-      
     );
   }
 }

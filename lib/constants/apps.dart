@@ -33,4 +33,9 @@ const List appList = [
     'description':
         'Cover entire syllabus in one night 😅 take a look how much time would it take',
   },
+  {
+    'appName': 'Quick Links',
+    'description':
+        'Don\'t wander here and there here we cover all your requirements all in one place',
+  },
 ];
