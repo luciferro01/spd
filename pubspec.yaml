@@ -59,6 +59,7 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
   flutter_launcher_icons: ^0.13.0
+  test: ^1.22.0
 flutter_icons:
   image_path: "assets/logo/super_app_logo.png"
   android: true
