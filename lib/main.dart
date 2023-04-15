@@ -41,7 +41,8 @@ class MyApp extends StatelessWidget {
           transitionDuration: const Duration(milliseconds: 1500),
         ),
       ],
-      home: const QuickLinksPage(),
+      home: SplashScreen(),
+//       home: const QuickLinksPage(),
     );
   }
 }
