@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/route_manager.dart';
 import 'package:spd/onboarding_screen.dart';
+import 'package:spd/quick_links/quick_links_page.dart';
 import './utils/routes.dart';
 
 import 'splash_screen.dart';
@@ -40,7 +41,7 @@ class MyApp extends StatelessWidget {
           transitionDuration: const Duration(milliseconds: 1500),
         ),
       ],
-      home: const SplashScreen(),
+      home: const QuickLinksPage(),
     );
   }
 }
