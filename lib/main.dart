@@ -2,7 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/route_manager.dart';
+import 'package:spd/onboarding_screen.dart';
 import 'package:spd/quick_links/quick_links_page.dart';
+import './utils/routes.dart';
+
+import 'splash_screen.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
@@ -23,7 +27,20 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.dark,
       ),
       debugShowCheckedModeBanner: false,
-      getPages: [],
+      getPages: [
+        GetPage(
+          name: Routes.splashScreen,
+          page: () => const SplashScreen(),
+          transition: Transition.circularReveal,
+          transitionDuration: const Duration(milliseconds: 2000),
+        ),
+        GetPage(
+          name: Routes.onboardingScreen,
+          page: () => const OnBoardingScreen(),
+          transition: Transition.circularReveal,
+          transitionDuration: const Duration(milliseconds: 1500),
+        ),
+      ],
       home: const QuickLinksPage(),
     );
   }
