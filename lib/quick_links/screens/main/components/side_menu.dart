@@ -12,11 +12,7 @@ class SideMenu extends StatelessWidget {
       child: ListView(
         children: [
           DrawerHeader(
-<<<<<<< HEAD
-            child: ("https://unsplash.com/photos/i8fRj3z8bvk"),
-=======
-            child: Image.asset("assets/images/logo.png"),
->>>>>>> f4b5d236d0e847784db40f2ce639e07213ffeffe
+            child: Image.asset("assets/logo/super_app_logo.png"),
           ),
           DrawerListTile(
             title: "Dashboard",
@@ -88,7 +84,7 @@ class DrawerListTile extends StatelessWidget {
       ),
       title: Text(
         title,
-        style: TextStyle(color: Colors.white54),
+        style: const TextStyle(color: Colors.white54),
       ),
     );
   }
