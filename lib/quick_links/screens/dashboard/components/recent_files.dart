@@ -22,7 +22,7 @@ class RecentFiles extends StatelessWidget {
         children: [
           Text(
             "Recent Files",
-            style: Theme.of(context).textTheme.subtitle1,
+            style: Theme.of(context).textTheme.titleMedium,
           ),
           const SizedBox(
             width: double.infinity,
