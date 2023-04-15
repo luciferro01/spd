@@ -5,35 +5,39 @@ import 'package:spd/constants/api_key.dart';
 import 'dart:convert';
 import 'dart:core';
 
+import '../models/youtube_playlist_data.dart';
+
 const playListUrl =
-    "https://www.googleapis.com/youtube/v3/playlistItems?part=contentDetails&maxResults=500&fields=items/contentDetails/videoId,nextPageToken,pageInfo&key=";
+    "https://www.googleapis.com/youtube/v3/playlistItems?part=contentDetails&maxResults=500&fields=items/contentDetails/videoId&key=";
 
 class YtLengthCalculatorController extends GetxController {
   var controller = TextEditingController();
-  List<String> videoIdList = [];
+  List<YoutubePlaylistData> videoIdList = [];
   late String playListId;
 
   youtubePlaylist() async {
     var res = await http
         .get(Uri.parse('$playListUrl$ytApiKey&playlistId=$playListId'));
 
+    var data = jsonDecode(res.body.toString());
     try {
       if (res.statusCode == 200) {
-        var body = res.body;
-        print(body);
-        var data = jsonDecode(body);
         debugPrint(data);
-        debugPrint(data['items'][0]['contentDetails']['videoId']);
-        // for (dynamic i in (data['items'].length)) {
-        //   videoIdList.add(data['items'][i]['contentDetails']['videoId']);
+        // debugPrint(data['items'][0]['contentDetails']['videoId']);
+        // for (Map<String, dynamic> i in (data['items'].length)) {
+        //   videoIdList.add(data['items'][i]);
         // }
-        print(
-          data['items'].forEach(
-            (e) => videoIdList.add(
-              data['items'][e]['contentDetails']['videoId'],
-            ),
-          ),
-        );
+        for (Map<String, dynamic> index in data) {
+          videoIdList.add(YoutubePlaylistData.fromJson(index));
+        }
+        debugPrint(videoIdList.toString());
+        // print(
+        //   data['items'].forEach(
+        //     (e) => videoIdList.add(
+        //       data['items'][e]['contentDetails']['videoId'],
+        //     ),
+        // ),
+        // );
         debugPrint(videoIdList.toString());
       }
     } catch (e) {
