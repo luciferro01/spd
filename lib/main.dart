@@ -2,11 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/route_manager.dart';
-import 'package:spd/onboarding_screen.dart';
-import 'package:spd/quick_links/quick_links_page.dart';
-import './utils/routes.dart';
-
-import 'splash_screen.dart';
+import 'package:spd/youtube_playlist_length_calculator/models/youtube_playlist_data.dart';
+import 'package:spd/youtube_playlist_length_calculator/screens/yt_len_cal.dart';
+import 'constants/routes.dart';
+import 'onboarding_screen/screens/onboarding_screen.dart';
+import 'splash_screen/screens/splash_screen.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
@@ -30,18 +30,18 @@ class MyApp extends StatelessWidget {
       getPages: [
         GetPage(
           name: Routes.splashScreen,
-          page: () => const SplashScreen(),
+          page: () => SplashScreen(),
           transition: Transition.circularReveal,
           transitionDuration: const Duration(milliseconds: 2000),
         ),
         GetPage(
           name: Routes.onboardingScreen,
-          page: () => const OnBoardingScreen(),
+          page: () => OnBoardingScreen(),
           transition: Transition.circularReveal,
           transitionDuration: const Duration(milliseconds: 1500),
         ),
       ],
-      home: const QuickLinksPage(),
+      home: YtLengthCalculator(),
     );
   }
 }
