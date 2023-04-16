@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:spd/QR_scanner_and_generator/pages/generator_page.dart';
 import 'package:spd/QR_scanner_and_generator/pages/scan_page.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class QrHomePage extends StatefulWidget {
+  const QrHomePage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<QrHomePage> createState() => _QrHomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _QrHomePageState extends State<QrHomePage> {
   int pageIndex = 0;
 
   List<Widget> pages = [const ScanPage(), const GeneratorPage()];

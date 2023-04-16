@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/route_manager.dart';
-import 'package:spd/QR_scanner_and_generator/pages/home_page.dart';
+import 'package:spd/QR_scanner_and_generator/pages/qr_home_page.dart';
 import 'package:spd/authentication/screens/authentication.dart';
 import 'package:spd/onboarding_screen/screens/onboarding_screen.dart';
 import 'constants/routes.dart';
@@ -62,8 +62,8 @@ class MyApp extends StatelessWidget {
           transitionDuration: const Duration(milliseconds: 500),
         ),
       ],
-      // home: const SplashScreen(),
-      home: HomePage(),
+      home: const SplashScreen(),
+      // home: QrHomePage(),
     );
   }
 }
