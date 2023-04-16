@@ -1,8 +1,12 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:spd/quick_links/models/RecentFile.dart';
 
-import '../../../constants.dart';
+import '../../../../constants/colors.dart';
+import '../../../../constants/paddings.dart';
+import '../../../models/RecentFile.dart';
+
+
 
 class RecentFiles extends StatelessWidget {
   const RecentFiles({
@@ -26,7 +30,7 @@ class RecentFiles extends StatelessWidget {
           ),
           SizedBox(
             width: double.infinity,
-            child: CircularProgressIndicator(),
+            child:Text("Removed")
           ),
         ],
       ),

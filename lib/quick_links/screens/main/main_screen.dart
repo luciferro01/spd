@@ -1,18 +1,16 @@
-
-
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:spd/quick_links/responsive.dart';
-import 'package:spd/quick_links/screens/dashboard/dashboard_screen.dart';
+import 'package:provider/provider.dart';
 
+import '../../responsive.dart';
+import '../dashboard/dashboard_screen.dart';
 import 'components/side_menu.dart';
 
 class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-     
-      drawer: SideMenu(),
-      body: SafeArea(
+    return CupertinoPageScaffold(
+      child: SafeArea(
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

@@ -1,11 +1,12 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get/get.dart';
-import 'package:spd/quick_links/controllers/MenuAppController.dart';
-import 'package:spd/quick_links/responsive.dart';
-import 'package:spd/quick_links/screens/main/main_screen.dart';
+import 'package:provider/provider.dart';
 
-import '../../../constants.dart';
+import '../../../../constants/colors.dart';
+import '../../../../constants/paddings.dart';
+import '../../../models/MyFiles.dart';
+import '../../../responsive.dart';
 
 class Header extends StatelessWidget {
   const Header({
@@ -18,10 +19,11 @@ class Header extends StatelessWidget {
       children: [
         if (!Responsive.isDesktop(context))
           IconButton(
-              icon: Icon(Icons.menu),
-              onPressed: () {
-                Get.to(MainScreen());////////////
-              }),
+            icon: Icon(Icons.menu),
+            onPressed: (){
+
+            }
+          ),
         if (!Responsive.isMobile(context))
           Text(
             "Dashboard",
