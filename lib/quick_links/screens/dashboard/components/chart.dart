@@ -1,7 +1,8 @@
 import 'package:fl_chart/fl_chart.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
-import '../../../constants.dart';
+import '../../../../constants/colors.dart';
+import '../../../../constants/paddings.dart';
 
 class Chart extends StatelessWidget {
   const Chart({
@@ -25,17 +26,15 @@ class Chart extends StatelessWidget {
           Positioned.fill(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const SizedBox(height: defaultPadding),
-                Text(
-                  "29.1",
-                  style: Theme.of(context).textTheme.headlineMedium!.copyWith(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w600,
-                        height: 0.5,
-                      ),
-                ),
-                const Text("of 128GB")
+              children: const [
+                SizedBox(height: defaultPadding),
+                Text("29.1",
+                    style: TextStyle(
+                      color: softwhite,
+                      fontWeight: FontWeight.w600,
+                      height: 0.5,
+                    )),
+                Text("of 128GB")
               ],
             ),
           ),
