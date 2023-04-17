@@ -2,7 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
-import 'package:spd/QR_scanner_and_generator/pages/scan_result_page.dart';
+import 'package:spd/constants/colors.dart';
+import './scan_result_page.dart';
+import '../constants/image_strings.dart';
 
 class ScanPage extends StatefulWidget {
   const ScanPage({super.key});
@@ -46,6 +48,7 @@ class _ScanPageState extends State<ScanPage> {
     return SafeArea(
       child: CupertinoPageScaffold(
         backgroundColor: const Color.fromARGB(255, 238, 243, 255),
+        // backgroundColor: softwhite,
         child: Padding(
           padding: const EdgeInsets.all(20),
           child: Column(
@@ -60,7 +63,14 @@ class _ScanPageState extends State<ScanPage> {
               // FloatingActionButton(onPressed: _scanQR)
               Container(
                 height: MediaQuery.of(context).size.height / 2,
-                color: const Color(0xfff3555eb),
+                decoration: BoxDecoration(
+                  color: const Color(0xfff3555eb),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Image.asset(
+                  qrCodeScanner,
+                  // scale: 0.3,
+                ),
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.08,
@@ -80,7 +90,7 @@ class _ScanPageState extends State<ScanPage> {
                             spreadRadius: 2,
                             blurStyle: BlurStyle.inner)
                       ],
-                      color: Colors.white,
+                      color: softwhite,
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Image.asset(
