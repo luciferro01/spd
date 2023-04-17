@@ -97,6 +97,12 @@ class MyApp extends StatelessWidget {
           transition: Transition.rightToLeft,
           transitionDuration: const Duration(milliseconds: 500),
         ),
+        GetPage(
+          name: Routes.qrcodeScanner,
+          page: () => const QrHomePage(),
+          transition: Transition.rightToLeft,
+          transitionDuration: const Duration(milliseconds: 500),
+        ),
       ],
       unknownRoute: GetPage(
         name: Routes.errorScreen,
@@ -104,7 +110,6 @@ class MyApp extends StatelessWidget {
         // transition: Transition.cupertino,
       ),
       home: SplashScreen(),
-
     );
   }
 }

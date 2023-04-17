@@ -47,8 +47,8 @@ class HomeScreen extends StatelessWidget {
     ),
     const HomeScreenCards(
       index: 6,
-      image: onbScreen2,
-      route: Routes.splashScreen,
+      image: qrCodeScanner,
+      route: Routes.qrcodeScanner,
       gradient: Gradients.nightSky,
     ),
     const HomeScreenCards(
@@ -63,6 +63,12 @@ class HomeScreen extends StatelessWidget {
       route: Routes.quickLinks,
       gradient: Gradients.viciousStance,
     ),
+    // const HomeScreenCards(
+    //   index: 9,
+    //   image: onbScreen1,
+    //   route: Routes.qrcodeScanner,
+    //   gradient: Gradients.happyFisher,
+    // ),
   ];
 
   @override
