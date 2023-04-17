@@ -10,7 +10,7 @@ import 'package:spd/authentication/controller/auth_screen_controller.dart';
 class AuthenticationScreen extends StatelessWidget {
   AuthenticationScreen({super.key});
 
-  AuthScreenController controller = Get.put(AuthScreenController());
+  final AuthScreenController controller = Get.put(AuthScreenController());
   // AuthScreenController controller = AuthScreenController();
 
   @override

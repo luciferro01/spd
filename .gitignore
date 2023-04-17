@@ -10,6 +10,8 @@
 .svn/
 migrate_working_dir/
 
+// keys
+/lib/constants/api_key.dart
 # IntelliJ related
 *.iml
 *.ipr
@@ -31,6 +33,10 @@ migrate_working_dir/
 .pub-cache/
 .pub/
 /build/
+
+
+# Security Related
+.lib/
 
 # Symbolication related
 app.*.symbols
