@@ -43,10 +43,16 @@ dependencies:
   google_sign_in: ^6.1.0
   firebase_core: ^2.9.0
   firebase_auth: ^4.4.0
+
+  flutter_barcode_scanner: ^2.0.0
+  url_launcher: ^6.1.10
+  share_plus: ^6.3.2
+
   dio: ^5.1.1
   http: ^0.13.5
   flutter_card_swiper: ^4.1.2
   flip_card: ^0.7.0
+
 
 dev_dependencies:
   flutter_test:
@@ -79,6 +85,7 @@ flutter:
   assets:
     - assets/logo/
     - assets/images/onborading_screen_images/
+    - assets/images/QR_scanner_images/
     - assets/icons/
   #   - images/a_dot_ham.jpeg
 

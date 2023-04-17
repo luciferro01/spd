@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/route_manager.dart';
+import 'package:spd/QR_scanner_and_generator/pages/qr_home_page.dart';
 import 'package:spd/authentication/screens/authentication.dart';
 import 'package:spd/gpt_assistant/chat_gpt/screens/chat_gpt_screen.dart';
 import 'package:spd/gradients_app/screen/gradients_app.dart';
@@ -103,6 +104,7 @@ class MyApp extends StatelessWidget {
         // transition: Transition.cupertino,
       ),
       home: SplashScreen(),
+
     );
   }
 }
