@@ -1,13 +1,14 @@
-
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:spd/quick_links/models/link.dart';
 
 import '../../../../constants/paddings.dart';
-import '../../../models/MyFiles.dart';
+
 import '../../../responsive.dart';
 import 'file_info_card.dart';
 
-class MyFiles extends StatelessWidget {
-  const MyFiles({
+class RecentLinks extends StatelessWidget {
+  const RecentLinks({
     Key? key,
   }) : super(key: key);
 
@@ -21,19 +22,21 @@ class MyFiles extends StatelessWidget {
           children: [
             Text(
               "My Files",
-              style: Theme.of(context).textTheme.subtitle1,
             ),
-            ElevatedButton.icon(
-              style: TextButton.styleFrom(
-                padding: EdgeInsets.symmetric(
-                  horizontal: defaultPadding * 1.5,
-                  vertical:
-                      defaultPadding / (Responsive.isMobile(context) ? 2 : 1),
-                ),
+            CupertinoButton(
+              padding: EdgeInsets.symmetric(
+                horizontal: defaultPadding * 1.5,
+                vertical:
+                    defaultPadding / (Responsive.isMobile(context) ? 2 : 1),
               ),
               onPressed: () {},
-              icon: Icon(Icons.add),
-              label: Text("Add New"),
+              child: Row(
+                children: [
+                  Icon(Icons.add),
+                  SizedBox(width: defaultPadding / 2),
+                  Text("Add New"),
+                ],
+              ),
             ),
           ],
         ),
@@ -68,14 +71,15 @@ class FileInfoCardGridView extends StatelessWidget {
     return GridView.builder(
       physics: NeverScrollableScrollPhysics(),
       shrinkWrap: true,
-      itemCount: demoMyFiles.length,
+      itemCount: demoRecentLinks.length,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: crossAxisCount,
         crossAxisSpacing: defaultPadding,
         mainAxisSpacing: defaultPadding,
         childAspectRatio: childAspectRatio,
       ),
-      itemBuilder: (context, index) => FileInfoCard(info: demoMyFiles[index]),
+      itemBuilder: (context, index) =>
+          FileInfoCard(info: demoRecentLinks[index]),
     );
   }
 }

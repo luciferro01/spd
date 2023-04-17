@@ -1,15 +1,13 @@
-
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../constants/colors.dart';
 import '../../../../constants/paddings.dart';
-import '../../../models/RecentFile.dart';
+import '../../../models/link.dart';
 
-
-
-class RecentFiles extends StatelessWidget {
-  const RecentFiles({
+class AllLinks extends StatelessWidget {
+  const AllLinks({
     Key? key,
   }) : super(key: key);
 
@@ -18,46 +16,42 @@ class RecentFiles extends StatelessWidget {
     return Container(
       padding: EdgeInsets.all(defaultPadding),
       decoration: BoxDecoration(
-        color: secondaryColor,
+        border: Border.all(color: secondaryColor),
         borderRadius: const BorderRadius.all(Radius.circular(10)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "Recent Files",
-            style: Theme.of(context).textTheme.subtitle1,
+            "Quick links",
           ),
           SizedBox(
-            width: double.infinity,
-            child:Text("Removed")
-          ),
+              width: double.infinity,
+              child: CupertinoListSection(
+                children: demoLinks
+                    .map<CupertinoListTile>((e) => CupertinoListTile(
+                          title: Text(e.title),
+                          onTap: () async {
+                            Uri lTemp = Uri.parse(e.url);
+                            try {
+                              await launchUrl(
+                                lTemp,
+                              );
+                            } catch (e) {
+                              print(e);
+                              print("Can't launch");
+                            }
+                          },
+                          leading: SvgPicture.asset(
+                            e.icon,
+                            height: 30,
+                            width: 30,
+                          ),
+                        ))
+                    .toList(),
+              )),
         ],
       ),
     );
   }
-}
-
-DataRow recentFileDataRow(RecentFile fileInfo) {
-  return DataRow(
-    cells: [
-      DataCell(
-        Row(
-          children: [
-            SvgPicture.asset(
-              fileInfo.icon!,
-              height: 30,
-              width: 30,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: defaultPadding),
-              child: Text(fileInfo.title!),
-            ),
-          ],
-        ),
-      ),
-      DataCell(Text(fileInfo.date!)),
-      DataCell(Text(fileInfo.size!)),
-    ],
-  );
 }
