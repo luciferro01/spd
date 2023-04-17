@@ -14,7 +14,7 @@ class AllLinks extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(defaultPadding),
+      padding: const EdgeInsets.all(defaultPadding),
       decoration: BoxDecoration(
         border: Border.all(color: secondaryColor),
         borderRadius: const BorderRadius.all(Radius.circular(10)),
@@ -22,7 +22,7 @@ class AllLinks extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
+          const Text(
             "Quick links",
           ),
           SizedBox(
@@ -38,8 +38,8 @@ class AllLinks extends StatelessWidget {
                                 lTemp,
                               );
                             } catch (e) {
-                              print(e);
-                              print("Can't launch");
+                              debugPrint(e.toString());
+                              debugPrint("Can't launch");
                             }
                           },
                           leading: SvgPicture.asset(

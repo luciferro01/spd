@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../constants/colors.dart';
@@ -13,9 +12,7 @@ class SideMenu extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       children: [
-        Container(
-          child: Image.asset("assets/images/logo.png"),
-        ),
+        Image.asset("assets/images/logo.png"),
         DrawerListTile(
           title: "Dashboard",
           svgSrc: "assets/icons/menu_dashbord.svg",

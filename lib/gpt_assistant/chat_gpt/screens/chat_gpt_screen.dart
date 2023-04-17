@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:spd/gpt_assistant/chat_gpt/controller/chat_gpt_controller.dart';
 
+// ignore: must_be_immutable
 class ChatGpt extends StatelessWidget {
   final controller = Get.put(ChatGptController());
   String prompt = "";

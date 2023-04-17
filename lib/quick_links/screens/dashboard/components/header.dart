@@ -37,8 +37,8 @@ class ProfileCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(left: defaultPadding),
-      padding: EdgeInsets.symmetric(
+      margin: const EdgeInsets.only(left: defaultPadding),
+      padding: const EdgeInsets.symmetric(
         horizontal: defaultPadding,
         vertical: defaultPadding / 2,
       ),
@@ -54,9 +54,8 @@ class ProfileCard extends StatelessWidget {
             height: 38,
           ),
           if (!Responsive.isMobile(context))
-            Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: defaultPadding / 2),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: defaultPadding / 2),
               child: Text("Angelina Jolie"),
             ),
           SvgPicture.asset("assets/icons/menu_setting.svg"),
@@ -73,7 +72,7 @@ class SearchField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoTextField(
+    return const CupertinoTextField(
       decoration: BoxDecoration(
           // hintText: "Search",
           // fillColor: secondaryColor,

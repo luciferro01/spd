@@ -96,7 +96,7 @@ class MyApp extends StatelessWidget {
         page: () => ErrorScreen(),
         // transition: Transition.cupertino,
       ),
-      home: MainScreen(),
+      home: const MainScreen(),
     );
   }
 }
