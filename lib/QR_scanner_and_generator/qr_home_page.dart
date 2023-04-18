@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:spd/QR_scanner_and_generator/pages/generator_page.dart';
-import 'package:spd/QR_scanner_and_generator/pages/scan_page.dart';
+import './scan_page.dart';
+import './generator_page.dart';
 
 class QrHomePage extends StatefulWidget {
   const QrHomePage({super.key});

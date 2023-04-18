@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:spd/quick_links/models/MyFiles.dart';
-import 'package:spd/quick_links/responsive.dart';
+import 'package:spd/quick_links/models/link.dart';
 
-import '../../../constants.dart';
+import '../../../../constants/paddings.dart';
+
+import '../../../responsive.dart';
 import 'file_info_card.dart';
 
-class MyFiles extends StatelessWidget {
-  const MyFiles({
+class Recent extends StatelessWidget {
+  const Recent({
     Key? key,
   }) : super(key: key);
 
@@ -19,21 +20,21 @@ class MyFiles extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              "My Files",
+              "Recent Links",
               style: Theme.of(context).textTheme.titleMedium,
             ),
-            ElevatedButton.icon(
-              style: TextButton.styleFrom(
-                padding: EdgeInsets.symmetric(
-                  horizontal: defaultPadding * 1.5,
-                  vertical:
-                      defaultPadding / (Responsive.isMobile(context) ? 2 : 1),
-                ),
-              ),
-              onPressed: () {},
-              icon: const Icon(Icons.add),
-              label: const Text("Add New"),
-            ),
+            // ElevatedButton.icon(
+            //   style: TextButton.styleFrom(
+            //     padding: EdgeInsets.symmetric(
+            //       horizontal: defaultPadding * 1.5,
+            //       vertical:
+            //           defaultPadding / (Responsive.isMobile(context) ? 2 : 1),
+            //     ),
+            //   ),
+            //   onPressed: () {},
+            //   icon: Icon(Icons.add),
+            //   label: Text("Add New"),
+            // ),
           ],
         ),
         const SizedBox(height: defaultPadding),
@@ -67,14 +68,15 @@ class FileInfoCardGridView extends StatelessWidget {
     return GridView.builder(
       physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
-      itemCount: demoMyFiles.length,
+      itemCount: demoRecentLinks.length,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: crossAxisCount,
         crossAxisSpacing: defaultPadding,
         mainAxisSpacing: defaultPadding,
         childAspectRatio: childAspectRatio,
       ),
-      itemBuilder: (context, index) => FileInfoCard(info: demoMyFiles[index]),
+      itemBuilder: (context, index) =>
+          FileInfoCard(info: demoRecentLinks[index]),
     );
   }
 }

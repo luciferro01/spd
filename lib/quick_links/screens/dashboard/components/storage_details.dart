@@ -1,6 +1,7 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
-import '../../../constants.dart';
+import '../../../../constants/colors.dart';
+import '../../../../constants/paddings.dart';
 import 'chart.dart';
 import 'storage_info_card.dart';
 

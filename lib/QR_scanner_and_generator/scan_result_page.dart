@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:share_plus/share_plus.dart';
-import 'package:spd/QR_scanner_and_generator/pages/scan_page.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ScanResult extends StatefulWidget {
@@ -127,13 +126,13 @@ class _ScanResultState extends State<ScanResult> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.asset("assets/images/QR_scanner_images/" + inputImage),
-                SizedBox(
+                Image.asset("assets/images/QR_scanner_images/$inputImage"),
+                const SizedBox(
                   height: 15,
                 ),
                 Text(
                   cardText,
-                  style: TextStyle(
+                  style: const TextStyle(
                       color: Color(0xfff3555eb),
                       fontWeight: FontWeight.w500,
                       fontSize: 15),
