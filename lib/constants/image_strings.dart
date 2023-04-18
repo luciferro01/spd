@@ -5,3 +5,4 @@ const String onbScreen2 =
     "assets/images/onborading_screen_images/onbScreen2.png";
 const String onbScreen3 =
     "assets/images/onborading_screen_images/onbScreen3.png";
+const String qrCodeScanner = "assets/images/QR_scanner_images/scanningQR.png";

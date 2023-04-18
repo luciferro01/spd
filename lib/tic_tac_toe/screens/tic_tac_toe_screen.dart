@@ -13,7 +13,7 @@ class TicTacToeScreen extends StatelessWidget {
           ),
         ),
         child: Column(
-          children: [],
+          children: const [],
         ));
   }
 }
