@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import 'package:spd/tic_tac_toe/screens/tic_tac_toe_screen.dart';
 
 import '../../../../constants/colors.dart';
 
@@ -16,27 +18,30 @@ class SideMenu extends StatelessWidget {
         DrawerListTile(
           title: "Dashboard",
           svgSrc: "assets/icons/menu_dashbord.svg",
-          press: () {},
+          press: () {
+            Get.to(() => TicTacToeScreen());
+          },
         ),
         DrawerListTile(
-          title: "Transaction",
+          title: "Gpt for students",
           svgSrc: "assets/icons/menu_tran.svg",
-          press: () {},
+          press: () {
+            Get.to(() => TicTacToeScreen());
+          },
         ),
         DrawerListTile(
-          title: "Task",
+          title: "Notes and To-do",
           svgSrc: "assets/icons/menu_task.svg",
-          press: () {},
+          press: () {
+            Get.to(() => TicTacToeScreen());
+          },
         ),
         DrawerListTile(
-          title: "Documents",
-          svgSrc: "assets/icons/menu_doc.svg",
-          press: () {},
-        ),
-        DrawerListTile(
-          title: "Store",
+          title: "Tic Tac Toe",
           svgSrc: "assets/icons/menu_store.svg",
-          press: () {},
+          press: () {
+            Get.to(() => TicTacToeScreen());
+          },
         ),
         DrawerListTile(
           title: "Notification",
@@ -51,7 +56,9 @@ class SideMenu extends StatelessWidget {
         DrawerListTile(
           title: "Settings",
           svgSrc: "assets/icons/menu_setting.svg",
-          press: () {},
+          press: () {
+            Get.to(() => TicTacToeScreen());
+          },
         ),
       ],
     );
