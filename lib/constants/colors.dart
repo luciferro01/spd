@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 const Color softwhite = Color(0xfffbfaf5);
 const Color softBlack = Color(0xff181a18);
+// Color? grey = Color.fromARGB(31, 94, 93, 93);
+// const Color grey = Color.fromARGB(153, 233, 196, 66);
 
 //May need
 const primaryColor = Color(0xFF2697FF);

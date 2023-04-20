@@ -9,6 +9,7 @@ import 'package:spd/gradients_app/screen/gradients_app.dart';
 import 'package:spd/home_screen/screens/home_screen.dart';
 import 'package:spd/onboarding_screen/screens/onboarding_screen.dart';
 import 'package:spd/quick_links/screens/main/main_screen.dart';
+import 'package:spd/tic_tac_toe/screens/tic_tac_toe_screen.dart';
 import 'constants/routes.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
@@ -100,6 +101,12 @@ class MyApp extends StatelessWidget {
         GetPage(
           name: Routes.qrcodeScanner,
           page: () => const QrHomePage(),
+          transition: Transition.rightToLeft,
+          transitionDuration: const Duration(milliseconds: 500),
+        ),
+        GetPage(
+          name: Routes.ticTacToe,
+          page: () => TicTacToeScreen(),
           transition: Transition.rightToLeft,
           transitionDuration: const Duration(milliseconds: 500),
         ),

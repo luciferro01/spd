@@ -79,9 +79,10 @@ class ChatGpt extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           SizedBox(height: size.height * 0.26),
-                          MessageBubble(prompt: prompt),
-                          Obx(() => MessageBubble(
-                              prompt: controller.response.toString()))
+                          MessageBubble(response: prompt),
+                          MessageBubble(
+                            response: controller.response.toString(),
+                          ),
                         ],
                       ),
               ),
@@ -124,10 +125,10 @@ class ChatGpt extends StatelessWidget {
 class MessageBubble extends StatelessWidget {
   const MessageBubble({
     super.key,
-    required this.prompt,
+    required this.response,
   });
 
-  final String prompt;
+  final String response;
 
   @override
   Widget build(BuildContext context) {
@@ -152,9 +153,9 @@ class MessageBubble extends StatelessWidget {
         isRepeatingAnimation: false,
         animatedTexts: [
           TypewriterAnimatedText(
-            prompt,
+            response,
             textStyle: const TextStyle(fontSize: 26),
-            speed: Duration(seconds: 5),
+            speed: const Duration(milliseconds: 50),
           ),
         ],
       ),

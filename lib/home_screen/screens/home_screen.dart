@@ -18,7 +18,7 @@ class HomeScreen extends StatelessWidget {
     const HomeScreenCards(
       index: 1,
       image: onbScreen2,
-      route: Routes.splashScreen,
+      route: Routes.ticTacToe,
       gradient: Gradients.passionateRed,
     ),
     const HomeScreenCards(
