@@ -156,9 +156,8 @@ class MyApp extends StatelessWidget {
       unknownRoute: GetPage(
         name: Routes.errorScreen,
         page: () => ErrorScreen(),
-        // transition: Transition.cupertino,
       ),
-      home: const MainScreen(),
+      home: HomeScreen(),
     );
   }
 }
