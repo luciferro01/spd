@@ -22,7 +22,7 @@ const List appList = [
   {
     'appName': 'Notes',
     'description':
-        'Wasting your time ⌛ or lending your money 💸 do at your very own app on the cloud'
+        'Wasting time ⌛ or lending money 💸 do at your very own app on the cloud'
   },
   {
     'appName': 'QR Scanner & Generator',
