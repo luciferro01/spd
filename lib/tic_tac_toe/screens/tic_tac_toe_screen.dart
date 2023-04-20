@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:spd/constants/colors.dart';
 import 'package:spd/tic_tac_toe/controller/tic_tac_toe_controller.dart';
-import 'package:cupertino_icons/cupertino_icons.dart';
 
 class TicTacToeScreen extends StatelessWidget {
   TicTacToeScreen({super.key});
@@ -13,52 +12,79 @@ class TicTacToeScreen extends StatelessWidget {
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
     return CupertinoPageScaffold(
-      // backgroundColor: grey,
-      // navigationBar: CupertinoNavigationBar(
-      //   backgroundColor: grey,
-      //   middle: Text(
-      //     'Tic Tac Toe',
-      //     style: TextStyle(fontSize: 25),
-      //   ),
-      // ),
+      backgroundColor: ticTacToeBackgroundColor,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const Spacer(flex: 3),
+          const Spacer(flex: 6),
           Container(
             padding: const EdgeInsets.all(0),
-            decoration: const BoxDecoration(
-              border: Border(
-                bottom: BorderSide(width: 0.5),
-              ),
-            ),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                CupertinoButton(
-                  padding: const EdgeInsets.all(0),
-                  child: const Icon(CupertinoIcons.chevron_back, size: 30),
-                  onPressed: () => Get.back(),
-                ),
-                const Spacer(flex: 1),
-                const Text(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: const [
+                Text(
                   'Tic Tac Toe',
                   style: TextStyle(
-                    color: softBlack,
-                    fontSize: 25,
+                    fontSize: 40,
                   ),
                 ),
-                const Spacer(flex: 2)
               ],
             ),
           ),
-          const Spacer(
-            flex: 2,
+          Divider(
+            height: 6,
+            indent: width * 0.1,
+            endIndent: width * 0.1,
+            thickness: 4,
+          ),
+          const Spacer(flex: 2),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Column(
+                children: [
+                  const Text(
+                    'Player O',
+                    style: TextStyle(
+                      fontSize: 30,
+                    ),
+                  ),
+                  Obx(
+                    () => Text(
+                      controller.oSore.value.toString(),
+                      style: const TextStyle(
+                        fontSize: 30,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Column(
+                children: [
+                  const Text(
+                    'Player X',
+                    style: TextStyle(
+                      fontSize: 30,
+                    ),
+                  ),
+                  Obx(
+                    () => Text(
+                      controller.xSore.value.toString(),
+                      style: const TextStyle(
+                        fontSize: 30,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                ],
+              )
+            ],
           ),
           Container(
             margin: const EdgeInsets.all(35),
-            height: height * 0.5,
+            height: height * 0.46,
             width: double.maxFinite,
             child: GridView.builder(
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -94,7 +120,7 @@ class TicTacToeScreen extends StatelessWidget {
             () => Text(
               '${controller.turn.value} Turn',
               style: const TextStyle(
-                fontSize: 40,
+                fontSize: 35,
               ),
             ),
           ),
@@ -107,7 +133,7 @@ class TicTacToeScreen extends StatelessWidget {
             ),
           ),
           const Spacer(
-            flex: 6,
+            flex: 8,
           ),
         ],
       ),

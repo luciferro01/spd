@@ -1,13 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
-import '../../constants/colors.dart';
-
-// import '../../constants/colors.dart';
-
 class TicTacToeController extends GetxController {
   RxBool oTurn = true.obs;
-  RxString turn = ''.obs;
+  RxString turn = 'O'.obs;
   RxList turns = [
     '',
     '',
@@ -20,6 +16,8 @@ class TicTacToeController extends GetxController {
     '',
   ].obs;
   RxInt filledBoxes = 0.obs;
+  RxInt oSore = 0.obs;
+  RxInt xSore = 0.obs;
 
 //On Tapping the Grid Container
 
@@ -42,44 +40,6 @@ class TicTacToeController extends GetxController {
   }
 
   void showWinnerDialog(String data, BuildContext context) {
-    // Get.showSnackbar(
-    //   GetSnackBar(
-    //     animationDuration: const Duration(milliseconds: 500),
-    //     isDismissible: true,
-    //     // snackPosition: SnackPosition.TOP,
-    //     backgroundColor: ticTacToeBackgroundColor,
-    //     messageText: Column(
-    //       children: [
-    //         data != 'Draw'
-    //             ? Text(
-    //                 '$data!!',
-    //                 style: const TextStyle(
-    //                   fontSize: 60,
-    //                   fontWeight: FontWeight.w800,
-    //                 ),
-    //               )
-    //             : Text(
-    //                 data,
-    //                 style: const TextStyle(
-    //                   fontSize: 60,
-    //                   fontWeight: FontWeight.w800,
-    //                 ),
-    //               ),
-    //         const Text(
-    //           'Won the Game',
-    //           style: TextStyle(
-    //             fontSize: 30,
-    //           ),
-    //         ),
-    //         CupertinoButton.filled(
-    //           onPressed: reset,
-    //           child: const Text('Play Again'),
-    //         )
-    //       ],
-    //     ),
-    //     duration: Duration(seconds: 2),
-    //   ),
-    // );
     showCupertinoDialog(
       context: (context),
       builder: ((context) => CupertinoAlertDialog(
@@ -127,6 +87,11 @@ class TicTacToeController extends GetxController {
             ],
           )),
     );
+    if (data == 'O') {
+      oSore.value++;
+    } else if (data == 'X') {
+      xSore.value++;
+    }
   }
 
   void checkWinner(BuildContext context) {
@@ -163,5 +128,6 @@ class TicTacToeController extends GetxController {
       '',
     ].toList();
     filledBoxes.value = 0;
+    // turn.value = 'O';
   }
 }
