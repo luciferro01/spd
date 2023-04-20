@@ -66,7 +66,7 @@ class TicTacToeScreen extends StatelessWidget {
               itemCount: 9,
               itemBuilder: (context, index) {
                 return GestureDetector(
-                  onTap: () => controller.onTap(index),
+                  onTap: () => controller.onTap(index, context),
                   child: Container(
                     decoration: BoxDecoration(
                       border: Border.all(
@@ -100,7 +100,7 @@ class TicTacToeScreen extends StatelessWidget {
           ),
           const Spacer(flex: 1),
           CupertinoButton.filled(
-            onPressed: controller.Reset,
+            onPressed: controller.reset,
             child: const Text(
               'Reset the game',
               style: TextStyle(fontSize: 20),
