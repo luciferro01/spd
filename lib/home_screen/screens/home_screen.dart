@@ -47,8 +47,8 @@ class HomeScreen extends StatelessWidget {
     ),
     const HomeScreenCards(
       index: 6,
-      image: onbScreen2,
-      route: Routes.splashScreen,
+      image: qrCodeScanner,
+      route: Routes.qrcodeScanner,
       gradient: Gradients.nightSky,
     ),
     const HomeScreenCards(
@@ -57,12 +57,17 @@ class HomeScreen extends StatelessWidget {
       route: Routes.ytLengthCalculator,
       gradient: Gradients.gentleCare,
     ),
+    const HomeScreenCards(
+      index: 8,
+      image: onbScreen2,
+      route: Routes.quickLinks,
+      gradient: Gradients.viciousStance,
+    ),
     // const HomeScreenCards(
-    //   image: onbScreen3,
-    //   appName: 'Tic Tac Toe',
-    //   route: Routes.splashScreen,
-    //   descriptionText: 'Hello',
-    //   gradient: Gradients.viciousStance,
+    //   index: 9,
+    //   image: onbScreen1,
+    //   route: Routes.qrcodeScanner,
+    //   gradient: Gradients.happyFisher,
     // ),
   ];
 

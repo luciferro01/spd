@@ -7,5 +7,6 @@ class Routes {
   static const String homeScreen = "/HomeScreen";
   static const String gradientApp = "/GradientApp";
   static const String ytLengthCalculator = "/YtLengthCalculator";
-  static const String quickLinks = "/QuickLinksPage";
+  static const String quickLinks = "/QuickLinks";
+  static const String qrcodeScanner = "/QRCodeScanner";
 }

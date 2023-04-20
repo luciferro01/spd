@@ -5,5 +5,4 @@ const String onbScreen2 =
     "assets/images/onborading_screen_images/onbScreen2.png";
 const String onbScreen3 =
     "assets/images/onborading_screen_images/onbScreen3.png";
-
-const String svgCabbage = "https://www.svgrepo.com/show/202548/cabbage.svg";
+const String qrCodeScanner = "assets/images/QR_scanner_images/scanningQR.png";const String svgCabbage = "https://www.svgrepo.com/show/202548/cabbage.svg";
