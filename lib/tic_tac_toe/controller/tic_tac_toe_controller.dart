@@ -42,43 +42,90 @@ class TicTacToeController extends GetxController {
   }
 
   void showWinnerDialog(String data, BuildContext context) {
-    Get.showSnackbar(
-      GetSnackBar(
-        animationDuration: const Duration(milliseconds: 500),
-        isDismissible: true,
-        // snackPosition: SnackPosition.TOP,
-        backgroundColor: ticTacToeBackgroundColor,
-        messageText: Column(
-          children: [
-            data != 'Draw'
-                ? Text(
-                    '$data!!',
-                    style: const TextStyle(
-                      fontSize: 60,
-                      fontWeight: FontWeight.w800,
-                    ),
-                  )
-                : Text(
-                    data,
-                    style: const TextStyle(
-                      fontSize: 60,
-                      fontWeight: FontWeight.w800,
-                    ),
-                  ),
-            const Text(
-              'Won the Game',
-              style: TextStyle(
-                fontSize: 30,
-              ),
+    // Get.showSnackbar(
+    //   GetSnackBar(
+    //     animationDuration: const Duration(milliseconds: 500),
+    //     isDismissible: true,
+    //     // snackPosition: SnackPosition.TOP,
+    //     backgroundColor: ticTacToeBackgroundColor,
+    //     messageText: Column(
+    //       children: [
+    //         data != 'Draw'
+    //             ? Text(
+    //                 '$data!!',
+    //                 style: const TextStyle(
+    //                   fontSize: 60,
+    //                   fontWeight: FontWeight.w800,
+    //                 ),
+    //               )
+    //             : Text(
+    //                 data,
+    //                 style: const TextStyle(
+    //                   fontSize: 60,
+    //                   fontWeight: FontWeight.w800,
+    //                 ),
+    //               ),
+    //         const Text(
+    //           'Won the Game',
+    //           style: TextStyle(
+    //             fontSize: 30,
+    //           ),
+    //         ),
+    //         CupertinoButton.filled(
+    //           onPressed: reset,
+    //           child: const Text('Play Again'),
+    //         )
+    //       ],
+    //     ),
+    //     duration: Duration(seconds: 2),
+    //   ),
+    // );
+    showCupertinoDialog(
+      context: (context),
+      builder: ((context) => CupertinoAlertDialog(
+            insetAnimationCurve: Curves.easeIn,
+            actionScrollController: ScrollController(
+              initialScrollOffset: 3,
+              keepScrollOffset: true,
             ),
-            CupertinoButton.filled(
-              onPressed: reset,
-              child: const Text('Play Again'),
-            )
-          ],
-        ),
-        duration: Duration(seconds: 2),
-      ),
+            actions: [
+              Container(
+                padding: const EdgeInsets.all(30),
+                child: Column(
+                  children: [
+                    data != 'Draw'
+                        ? Text(
+                            '$data!!',
+                            style: const TextStyle(
+                              fontSize: 60,
+                              fontWeight: FontWeight.w800,
+                            ),
+                          )
+                        : Text(
+                            data,
+                            style: const TextStyle(
+                              fontSize: 60,
+                              fontWeight: FontWeight.w800,
+                            ),
+                          ),
+                    const Text(
+                      'Won the Game',
+                      style: TextStyle(
+                        fontSize: 30,
+                      ),
+                    ),
+                    CupertinoButton.filled(
+                      onPressed: () {
+                        reset();
+                        Navigator.of(context).pop();
+                      },
+                      child: const Text('Play Again'),
+                    )
+                  ],
+                ),
+              ),
+            ],
+          )),
     );
   }
 
