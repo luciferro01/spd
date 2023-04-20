@@ -18,13 +18,13 @@ class HomeScreen extends StatelessWidget {
     const HomeScreenCards(
       index: 1,
       image: onbScreen2,
-      route: Routes.splashScreen,
+      route: Routes.ticTacToe,
       gradient: Gradients.passionateRed,
     ),
     const HomeScreenCards(
       index: 2,
       image: onbScreen3,
-      route: Routes.splashScreen,
+      route: Routes.chatGpt,
       gradient: Gradients.aquaSplash,
     ),
     const HomeScreenCards(
@@ -81,16 +81,21 @@ class HomeScreen extends StatelessWidget {
           style: TextStyle(fontSize: 25),
         ),
       ),
-      child: Container(
-        margin: EdgeInsets.only(
-            left: 10, right: 10, top: height * 0.12, bottom: height * 0.1),
-        width: double.infinity,
-        height: height * 0.8,
-        child: CardSwiper(
-          cardsCount: cards.length,
-          cardBuilder: (context, index) => cards[index],
-        ),
+      child: Stack(
+        children: [
+          Container(
+            margin: EdgeInsets.only(
+                left: 10, right: 10, top: height * 0.12, bottom: height * 0.1),
+            width: double.infinity,
+            height: height * 0.8,
+            child: CardSwiper(
+              cardsCount: cards.length,
+              cardBuilder: (context, index) => cards[index],
+            ),
+          ),
+        ],
       ),
     );
+    // );
   }
 }

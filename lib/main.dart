@@ -9,6 +9,7 @@ import 'package:spd/gradients_app/screen/gradients_app.dart';
 import 'package:spd/home_screen/screens/home_screen.dart';
 import 'package:spd/onboarding_screen/screens/onboarding_screen.dart';
 import 'package:spd/quick_links/screens/main/main_screen.dart';
+import 'package:spd/tic_tac_toe/screens/tic_tac_toe_screen.dart';
 import 'constants/routes.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
@@ -59,25 +60,25 @@ class MyApp extends StatelessWidget {
           name: Routes.onboardingScreen,
           page: () => OnBoardingScreen(),
           transition: Transition.circularReveal,
-          transitionDuration: const Duration(milliseconds: 1500),
+          transitionDuration: const Duration(milliseconds: 500),
         ),
         GetPage(
           name: Routes.authentication,
           page: () => AuthenticationScreen(),
           transition: Transition.rightToLeft,
-          transitionDuration: const Duration(milliseconds: 1500),
+          transitionDuration: const Duration(milliseconds: 500),
         ),
         GetPage(
           name: Routes.chatGpt,
           page: () => ChatGpt(),
           transition: Transition.rightToLeft,
-          transitionDuration: const Duration(milliseconds: 1500),
+          transitionDuration: const Duration(milliseconds: 500),
         ),
         GetPage(
           name: Routes.homeScreen,
           page: () => HomeScreen(),
           transition: Transition.native,
-          transitionDuration: const Duration(milliseconds: 1000),
+          transitionDuration: const Duration(milliseconds: 500),
         ),
         GetPage(
           name: Routes.gradientApp,
@@ -100,6 +101,12 @@ class MyApp extends StatelessWidget {
         GetPage(
           name: Routes.qrcodeScanner,
           page: () => const QrHomePage(),
+          transition: Transition.rightToLeft,
+          transitionDuration: const Duration(milliseconds: 500),
+        ),
+        GetPage(
+          name: Routes.ticTacToe,
+          page: () => TicTacToeScreen(),
           transition: Transition.rightToLeft,
           transitionDuration: const Duration(milliseconds: 500),
         ),

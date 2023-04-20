@@ -1,11 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'dart:convert';
-// import 'package:get/get.dart';
 import '../../../constants/api_key.dart';
 import 'package:http/http.dart' as http;
 
 class ChatGptController extends GetxController {
+  bool isPrompt = false;
+  var response = ''.obs;
   TextEditingController textEditingController = TextEditingController();
   final List<Map<String, String>> messages = [];
   String https = "https://api.openai.com/v1/chat/completions";
@@ -29,8 +30,12 @@ class ChatGptController extends GetxController {
       if (res.statusCode == 200) {
         String content =
             jsonDecode(res.body)['choices'][0]['message']['content'];
-        // content = content.trim();
+        content = content.trim();
+        // isPrompt = true as RxBool;
         debugPrint(content);
+        isPrompt = true;
+        response.value = content;
+        debugPrint('$isPrompt');
         return content;
       }
     } catch (e) {
