@@ -52,7 +52,7 @@ class TicTacToeScreen extends StatelessWidget {
                   ),
                   Obx(
                     () => Text(
-                      controller.oSore.value.toString(),
+                      controller.oScore.value.toString(),
                       style: const TextStyle(
                         fontSize: 30,
                         fontWeight: FontWeight.w600,
@@ -71,7 +71,7 @@ class TicTacToeScreen extends StatelessWidget {
                   ),
                   Obx(
                     () => Text(
-                      controller.xSore.value.toString(),
+                      controller.xScore.value.toString(),
                       style: const TextStyle(
                         fontSize: 30,
                         fontWeight: FontWeight.w600,
@@ -125,12 +125,31 @@ class TicTacToeScreen extends StatelessWidget {
             ),
           ),
           const Spacer(flex: 1),
-          CupertinoButton.filled(
-            onPressed: controller.reset,
-            child: const Text(
-              'Reset the game',
-              style: TextStyle(fontSize: 20),
-            ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              CupertinoButton.filled(
+                padding: const EdgeInsets.all(15),
+                borderRadius: BorderRadius.circular(10),
+                onPressed: controller.reset,
+                child: const Text(
+                  'Reset the game',
+                  style: TextStyle(fontSize: 20),
+                ),
+              ),
+              // sizedBox(wid),
+              CupertinoButton(
+                borderRadius: BorderRadius.circular(10),
+                padding: const EdgeInsets.only(
+                    top: 15, bottom: 15, left: 30, right: 30),
+                color: Colors.black,
+                onPressed: controller.hardReset,
+                child: const Text(
+                  'Hard Reset',
+                  style: TextStyle(fontSize: 20),
+                ),
+              ),
+            ],
           ),
           const Spacer(
             flex: 8,
