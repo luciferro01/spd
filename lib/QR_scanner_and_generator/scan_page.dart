@@ -64,7 +64,7 @@ class _ScanPageState extends State<ScanPage> {
               Container(
                 height: MediaQuery.of(context).size.height / 2,
                 decoration: BoxDecoration(
-                  color: const Color(0xfff3555eb),
+                  color: const Color(0xff3555eb),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Image.asset(
@@ -85,7 +85,7 @@ class _ScanPageState extends State<ScanPage> {
                       boxShadow: const [
                         BoxShadow(
                             offset: Offset.zero,
-                            color: Color(0xfff3555eb),
+                            color: Color(0xff3555eb),
                             blurRadius: 10,
                             spreadRadius: 2,
                             blurStyle: BlurStyle.inner)

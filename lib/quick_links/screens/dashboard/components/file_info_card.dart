@@ -72,7 +72,7 @@ class FileInfoCard extends StatelessWidget {
               child: Text(
                 info.description!,
                 overflow: TextOverflow.ellipsis,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 13,
                 ),
               ),

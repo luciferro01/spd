@@ -10,59 +10,61 @@ class HomeScreen extends StatelessWidget {
 
   final List cards = [
     const HomeScreenCards(
-      index: 0,
+      index: 3,
       image: onbScreen1,
       route: Routes.gradientApp,
       gradient: Gradients.happyFisher,
     ),
     const HomeScreenCards(
-      index: 1,
+      index: 0,
       image: onbScreen2,
       route: Routes.ticTacToe,
       gradient: Gradients.passionateRed,
     ),
-    const HomeScreenCards(
-      index: 2,
-      image: onbScreen3,
-      route: Routes.chatGpt,
-      gradient: Gradients.aquaSplash,
-    ),
-    const HomeScreenCards(
-      index: 3,
-      image: onbScreen1,
-      route: Routes.splashScreen,
-      gradient: Gradients.eternalConstance,
-    ),
+    // const HomeScreenCards(
+    //   index: 2,
+    //   image: onbScreen3,
+    //   route: Routes.chatGpt,
+    //   gradient: Gradients.aquaSplash,
+    // ),
+    // const HomeScreenCards(
+    //   index: 3,
+    //   image: onbScreen1,
+    //   route: Routes.splashScreen,
+    //   gradient: Gradients.eternalConstance,
+    // ),
     const HomeScreenCards(
       index: 4,
       image: onbScreen2,
-      route: Routes.splashScreen,
+      route: Routes.hangman,
       gradient: Gradients.healthyWater,
     ),
+    // const HomeScreenCards(
+    //   index: 5,
+    //   image: onbScreen2,
+    //   route: Routes.splashScreen,
+    //   gradient: Gradients.morningSalad,
+    // ),
     const HomeScreenCards(
-      index: 5,
-      image: onbScreen2,
-      route: Routes.splashScreen,
-      gradient: Gradients.morningSalad,
-    ),
-    const HomeScreenCards(
-      index: 6,
+      index: 2,
       image: qrCodeScanner,
       route: Routes.qrcodeScanner,
       gradient: Gradients.nightSky,
     ),
-    const HomeScreenCards(
-      index: 7,
-      image: onbScreen2,
-      route: Routes.ytLengthCalculator,
-      gradient: Gradients.gentleCare,
-    ),
-    const HomeScreenCards(
-      index: 8,
-      image: onbScreen2,
-      route: Routes.quickLinks,
-      gradient: Gradients.viciousStance,
-    ),
+    // const HomeScreenCards(
+    //   index: 7,
+    //   image: onbScreen2,
+    //   route: Routes.ytLengthCalculator,
+    //   gradient: Gradients.gentleCare,
+    // ),
+    // const HomeScreenCards(
+    //   index: 8,
+    //   image: onbScreen2,
+    //   route: Routes.quickLinks,
+    //   gradient: Gradients.viciousStance,
+    // ),
+
+    //Still don't know about this one
     // const HomeScreenCards(
     //   index: 9,
     //   image: onbScreen1,

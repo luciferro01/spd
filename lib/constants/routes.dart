@@ -10,4 +10,5 @@ class Routes {
   static const String quickLinks = "/QuickLinks";
   static const String qrcodeScanner = "/QRCodeScanner";
   static const String ticTacToe = "/TicTacToe";
+  static const String hangman = "/Hangman";
 }
