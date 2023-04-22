@@ -29,7 +29,7 @@ class YtLengthCalculatorController extends GetxController {
         for (Map<String, dynamic> index in data) {
           videoIdList.add(YoutubePlaylistData.fromJson(index));
         }
-        print(videoIdList);
+        debugPrint(videoIdList.toString());
         // print(
         //   data['items'].forEach(
         //     (e) => videoIdList.add(

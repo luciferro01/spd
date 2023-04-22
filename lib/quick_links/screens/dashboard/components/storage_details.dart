@@ -3,8 +3,8 @@ import 'package:whiteboard/whiteboard.dart';
 
 import '../../../../constants/colors.dart';
 import '../../../../constants/paddings.dart';
-import 'chart.dart';
-import 'storage_info_card.dart';
+// import 'chart.dart';
+// import 'storage_info_card.dart';
 
 class StarageDetails extends StatelessWidget {
   StarageDetails({
