@@ -84,6 +84,7 @@ class DrawerListTile extends StatelessWidget {
       leading: SvgPicture.asset(
         svgSrc,
         height: 16,
+        color: softwhite,
       ),
       title: Text(
         title,

@@ -33,9 +33,10 @@ class _GeneratorPageState extends State<GeneratorPage> {
     final modifiedData = await Navigator.push(
       context,
       CupertinoPageRoute(
-          builder: (builder) => CustomizeQR(
-                customs: receiveCustoms,
-              )),
+        builder: (builder) => CustomizeQR(
+          customs: receiveCustoms,
+        ),
+      ),
     );
     if (modifiedData != null) {
       receiveCustoms = modifiedData;
@@ -139,6 +140,7 @@ class _GeneratorPageState extends State<GeneratorPage> {
                                 fontSize: 20, fontWeight: FontWeight.bold),
                           ),
                         ),
+                        autofocus: false,
                         style: const TextStyle(fontSize: 20),
                         placeholder: "Enter Text or Link here",
                       ),
