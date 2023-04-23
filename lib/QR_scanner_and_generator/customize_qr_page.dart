@@ -30,7 +30,7 @@ class _CustomizeQRState extends State<CustomizeQR> {
         _image = File(image.path);
       });
     } on PlatformException catch (e) {
-      print('Failed to pick image: $e');
+      debugPrint('Failed to pick image: $e');
     }
   }
 
@@ -38,40 +38,38 @@ class _CustomizeQRState extends State<CustomizeQR> {
     return showCupertinoDialog(
       context: context,
       builder: (BuildContext context) {
-        print("called");
-        return Container(
-          child: CupertinoAlertDialog(
-            title: Text(
-              "Pick a color",
-              style: TextStyle(),
-            ),
-            content: SingleChildScrollView(
-              child: MaterialPicker(
-                pickerColor: selectedColor,
-                onColorChanged: (Color color) {
-                  if (selectedColor == selectedFGColor) {
-                    setState(() {
-                      selectedColor = color;
-                      selectedFGColor = selectedColor;
-                    });
-                  } else {
-                    setState(() {
-                      selectedColor = color;
-                      selectedBGcolor = selectedColor;
-                    });
-                  }
-                },
-              ),
-            ),
-            actions: <Widget>[
-              TextButton(
-                child: const Text('OK'),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-              ),
-            ],
+        debugPrint("called");
+        return CupertinoAlertDialog(
+          title: const Text(
+            "Pick a color",
+            style: TextStyle(),
           ),
+          content: SingleChildScrollView(
+            child: MaterialPicker(
+              pickerColor: selectedColor,
+              onColorChanged: (Color color) {
+                if (selectedColor == selectedFGColor) {
+                  setState(() {
+                    selectedColor = color;
+                    selectedFGColor = selectedColor;
+                  });
+                } else {
+                  setState(() {
+                    selectedColor = color;
+                    selectedBGcolor = selectedColor;
+                  });
+                }
+              },
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: const Text('OK'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
         );
       },
     );
@@ -91,8 +89,8 @@ class _CustomizeQRState extends State<CustomizeQR> {
       child: Column(
         children: [
           Container(
-            margin: EdgeInsets.all(15),
-            padding: EdgeInsets.all(20),
+            margin: const EdgeInsets.all(15),
+            padding: const EdgeInsets.all(20),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
               color: Colors.white,
@@ -129,7 +127,7 @@ class _CustomizeQRState extends State<CustomizeQR> {
                                 ),
                         ),
                         CupertinoButton(
-                            child: Icon(CupertinoIcons.delete),
+                            child: const Icon(CupertinoIcons.delete),
                             onPressed: () {
                               setState(() {
                                 _image = null;
@@ -152,7 +150,7 @@ class _CustomizeQRState extends State<CustomizeQR> {
                           )
                         ],
                         borderRadius: BorderRadius.circular(12),
-                        color: Color(0xfff3555eb),
+                        color: const Color(0xff3555eb),
                       ),
                       child: (_image != null)
                           ? Image.file(
@@ -176,8 +174,8 @@ class _CustomizeQRState extends State<CustomizeQR> {
             ),
           ),
           Container(
-            margin: EdgeInsets.all(15),
-            padding: EdgeInsets.all(20),
+            margin: const EdgeInsets.all(15),
+            padding: const EdgeInsets.all(20),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
               color: Colors.white,
@@ -192,7 +190,7 @@ class _CustomizeQRState extends State<CustomizeQR> {
                   style: TextStyle(fontSize: 25),
                 ),
                 CupertinoSwitch(
-                  activeColor: Color(0xfff3555eb),
+                  activeColor: const Color(0xff3555eb),
                   value: roundEdges,
                   onChanged: (value) {
                     roundEdges = value;
@@ -203,8 +201,8 @@ class _CustomizeQRState extends State<CustomizeQR> {
             ),
           ),
           Container(
-            margin: EdgeInsets.all(15),
-            padding: EdgeInsets.all(20),
+            margin: const EdgeInsets.all(15),
+            padding: const EdgeInsets.all(20),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
               color: Colors.white,
@@ -224,7 +222,7 @@ class _CustomizeQRState extends State<CustomizeQR> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     CupertinoButton(
-                        child: Icon(CupertinoIcons.paintbrush),
+                        child: const Icon(CupertinoIcons.paintbrush),
                         onPressed: () {
                           colorPicker(selectedFGColor);
                         }),
@@ -252,8 +250,8 @@ class _CustomizeQRState extends State<CustomizeQR> {
             ),
           ),
           Container(
-            margin: EdgeInsets.all(15),
-            padding: EdgeInsets.all(20),
+            margin: const EdgeInsets.all(15),
+            padding: const EdgeInsets.all(20),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
               color: Colors.white,
@@ -273,7 +271,7 @@ class _CustomizeQRState extends State<CustomizeQR> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     CupertinoButton(
-                        child: Icon(CupertinoIcons.paintbrush),
+                        child: const Icon(CupertinoIcons.paintbrush),
                         onPressed: () {
                           colorPicker(selectedBGcolor);
                         }),
@@ -312,7 +310,7 @@ class _CustomizeQRState extends State<CustomizeQR> {
               //     CupertinoPageRoute(builder: (builder) => GeneratorPage()));
               Navigator.of(context).pop(_modifiedData);
             },
-            label: Text("Save"),
+            label: const Text("Save"),
           ),
         ],
       ),
