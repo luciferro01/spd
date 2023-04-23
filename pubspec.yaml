@@ -57,6 +57,7 @@ dependencies:
   flip_card: ^0.7.0
   whiteboard: ^0.0.2
   animated_text_kit: ^4.2.2
+  shared_preferences: ^2.1.0
 
 
 dev_dependencies:

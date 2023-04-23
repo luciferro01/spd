@@ -20,10 +20,10 @@ const List appList = [
     'appName': 'Hang Man',
     'description': 'Ever got less marks 🥲 play a game and release your stress'
   },
-  // {
-  //   'appName': 'Chat GPT',
-  //   'description': 'Your personal writing assistant on you fingers'
-  // },
+  {
+    'appName': 'Chat GPT',
+    'description': 'Your personal writing assistant on you fingers'
+  },
 
   // {
   //   'appName': 'Dall -E',

@@ -1,25 +1,28 @@
 import 'package:flutter/cupertino.dart';
-import 'package:spd/quick_links/screens/dashboard/components/my_files.dart';
+import 'package:get/get.dart';
+import 'package:spd/quick_links/screens/dashboard/components/recent.dart';
 
 import '../../../constants/paddings.dart';
+import '../../controllers/recent_links_controller.dart';
 import '../../responsive.dart';
 import 'components/header.dart';
 
 import 'components/recent_files.dart';
-import 'components/storage_details.dart';
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final RecentLinksController recentLinksController =
+        Get.put(RecentLinksController());
     return SingleChildScrollView(
       primary: false,
       padding: const EdgeInsets.all(defaultPadding),
       child: Column(
         children: [
-          const Header(),
-          const SizedBox(height: defaultPadding),
+          // const Header(),
+          // const SizedBox(height: defaultPadding),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -27,23 +30,18 @@ class DashboardScreen extends StatelessWidget {
                 flex: 5,
                 child: Column(
                   children: [
-                    const Recent(),
+                    Recent(
+                      recentLinksController: recentLinksController,
+                    ),
                     const SizedBox(height: defaultPadding),
-                    const AllLinks(),
-                    if (Responsive.isMobile(context))
-                      const SizedBox(height: defaultPadding),
-                    if (Responsive.isMobile(context)) StarageDetails(),
+                    AllLinks(
+                      recentLinksController: recentLinksController,
+                    ),
                   ],
                 ),
               ),
-              if (!Responsive.isMobile(context))
-                const SizedBox(width: defaultPadding),
+
               // On Mobile means if the screen is less than 850 we dont want to show it
-              if (!Responsive.isMobile(context))
-                Expanded(
-                  flex: 2,
-                  child: StarageDetails(),
-                ),
             ],
           )
         ],

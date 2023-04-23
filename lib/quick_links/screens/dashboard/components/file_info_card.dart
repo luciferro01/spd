@@ -43,11 +43,10 @@ class FileInfoCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
-                  padding: const EdgeInsets.all(defaultPadding * 0.75),
                   height: 40,
                   width: 40,
-                  decoration: const BoxDecoration(
-                    color: softBlack,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
                     borderRadius: BorderRadius.all(Radius.circular(10)),
                   ),
                   child: SvgPicture.asset(
@@ -57,22 +56,26 @@ class FileInfoCard extends StatelessWidget {
                 Text(
                   info.title!,
                   maxLines: 1,
+                  textAlign: TextAlign.start,
                   overflow: TextOverflow.ellipsis,
                   style: const TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
+                SizedBox(
+                  width: 1,
+                )
                 // SvgPicture.asset("assets/icons/menu_setting.svg")
               ],
             ),
             Padding(
-              padding:
-                  const EdgeInsets.symmetric(vertical: 32.0, horizontal: 8.0),
+              padding: const EdgeInsets.only(top: 20.0, left: 8.0),
               child: Text(
-                info.description!,
+                info.subtitle!,
+                maxLines: 6,
                 overflow: TextOverflow.ellipsis,
-                style: const TextStyle(
+                style: TextStyle(
                   fontSize: 13,
                 ),
               ),
