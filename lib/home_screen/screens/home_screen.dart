@@ -24,7 +24,7 @@ class HomeScreen extends StatelessWidget {
     const HomeScreenCards(
       index: 2,
       image: onbScreen3,
-      route: Routes.chatGpt,
+      route: Routes.chatPage,
       gradient: Gradients.aquaSplash,
     ),
     const HomeScreenCards(
@@ -61,6 +61,12 @@ class HomeScreen extends StatelessWidget {
       index: 8,
       image: onbScreen2,
       route: Routes.quickLinks,
+      gradient: Gradients.viciousStance,
+    ),
+    const HomeScreenCards(
+      index: 9,
+      image: onbScreen2,
+      route: Routes.chatPage,
       gradient: Gradients.viciousStance,
     ),
     // const HomeScreenCards(

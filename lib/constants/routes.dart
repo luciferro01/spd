@@ -4,6 +4,7 @@ class Routes {
   static const String authentication = "/AuthenticationScreen";
   static const String errorScreen = "/ErrorScreen";
   static const String chatGpt = "/ChatGpt";
+  static const String chatPage = "/ChatPage";
   static const String homeScreen = "/HomeScreen";
   static const String gradientApp = "/GradientApp";
   static const String ytLengthCalculator = "/YtLengthCalculator";

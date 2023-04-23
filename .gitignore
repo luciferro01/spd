@@ -35,7 +35,7 @@ migrate_working_dir/
 .pub/
 /build/
 
-
+lib/keys.dart
 # Security Related
 .lib/
 

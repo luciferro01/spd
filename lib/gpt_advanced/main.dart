@@ -1,13 +1,19 @@
 import 'dart:convert';
 import 'package:animated_text_kit/animated_text_kit.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter/cupertino.dart';
+
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:spd/constants/colors.dart';
+import 'package:spd/keys.dart';
 
-const backgroundColor = Color(0xff343541);
-const botBackgroundColor = Color(0xff444654);
+const backgroundColor = Color.fromARGB(255, 255, 255, 255);
+
+const botTextColor = Color(0xffe5e5e5);
+const botBackgroundColor = Color(0xff5896EB);
+const userTextColor = Color.fromARGB(255, 0, 0, 0);
+const userBackgroundColor = Color(0xffe5e5e5);
 
 class ChatPage extends StatefulWidget {
   const ChatPage({super.key});
@@ -17,7 +23,7 @@ class ChatPage extends StatefulWidget {
 }
 
 Future<String> generateResponse(String prompt) async {
-  const apiKey = "chatGPTApiKey"; //apiSecretKey;
+  const apiKey = chatGPTApiKey; //apiSecretKey;
 
   var url = Uri.https("api.openai.com", "/v1/completions");
   final response = await http.post(
@@ -60,69 +66,38 @@ class _ChatPageState extends State<ChatPage> {
   @override
   Widget build(BuildContext context) {
     MediaQueryData mediaQuery = MediaQuery.of(context);
-    return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        title: const Text(
-          "OpenAI's ChatGPT bot",
-          maxLines: 1,
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            color: Colors.white54,
-            fontSize: 20,
-          ),
-        ),
-        backgroundColor: botBackgroundColor,
-      ),
+    return CupertinoPageScaffold(
       backgroundColor: backgroundColor,
-      body: SafeArea(
+      // navigationBar: ,
+
+      child: SafeArea(
         child: Column(
           children: [
             Expanded(
               child: _messages.isEmpty
-                  ? Center(
-                      child: Wrap(
-                      direction: mediaQuery.size.width < 800
-                          ? Axis.horizontal
-                          : Axis.vertical,
-                      children: [
-                        flexCardGpt(
-                            icon: Icons.flash_on,
-                            color: Colors.amberAccent,
-                            text: "A chatbot powered by OpenAI's GPT-3"),
-                        // flexCardGpt(
-                        //     icon: Icons.multitrack_audio_rounded,
-                        //     color: Colors.cyanAccent,
-                        //     text: "It is trained to speak out responses"),
-                        flexCardGpt(
-                            icon: Icons.warning_amber_rounded,
-                            color: Colors.red.shade400,
-                            text:
-                                "Limited knowledge of world after 2021.\n May produce harmful instructions or biased content"),
-                      ],
-                    ))
+                  ? flexCardGpt(
+                      icon: CupertinoIcons.lightbulb_fill,
+                      color: softwhite,
+                      text: "A chatbot powered by OpenAI's GPT-3")
                   : _buildList(),
             ),
             Visibility(
               visible: isLoading,
-              child: const Padding(
-                padding: EdgeInsets.all(8.0),
-                child: CircularProgressIndicator(
-                  color: Colors.white,
-                ),
+              child: CupertinoActivityIndicator(
+                color: softBlack,
               ),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Row(
                 children: [
-                  IconButton(
+                  CupertinoButton(
                       onPressed: () {
                         Get.back();
                       },
-                      icon: Icon(
-                        Icons.arrow_back_ios,
-                        color: Colors.white,
+                      child: const Icon(
+                        CupertinoIcons.back,
+                        color: userTextColor,
                       )),
                   _buildInput(),
                   _buildSubmit(),
@@ -138,9 +113,9 @@ class _ChatPageState extends State<ChatPage> {
   Widget _buildSubmit() {
     return Visibility(
       visible: !isLoading,
-      child: IconButton(
-        icon: const Icon(
-          Icons.send_rounded,
+      child: CupertinoButton(
+        child: const Icon(
+          CupertinoIcons.search,
           color: Color.fromRGBO(142, 142, 160, 1),
         ),
         onPressed: () async {
@@ -188,9 +163,9 @@ class _ChatPageState extends State<ChatPage> {
 
   Expanded _buildInput() {
     return Expanded(
-      child: TextField(
+      child: CupertinoTextField(
         textCapitalization: TextCapitalization.sentences,
-        style: const TextStyle(color: Colors.white),
+        style: const TextStyle(color: softwhite),
         controller: _textController,
         onSubmitted: (str) {
           if (str != "") {
@@ -229,15 +204,6 @@ class _ChatPageState extends State<ChatPage> {
             Get.snackbar("Error", "Please enter a message");
           }
         },
-        decoration: const InputDecoration(
-          fillColor: botBackgroundColor,
-          filled: true,
-          border: InputBorder.none,
-          focusedBorder: InputBorder.none,
-          enabledBorder: InputBorder.none,
-          errorBorder: InputBorder.none,
-          disabledBorder: InputBorder.none,
-        ),
       ),
     );
   }
@@ -297,8 +263,10 @@ class flexCardGpt extends StatelessWidget {
           child: Text(
             text,
             textAlign: TextAlign.center,
-            style: TextStyle(
-                color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
+            style: const TextStyle(
+                color: userTextColor,
+                fontSize: 16,
+                fontWeight: FontWeight.bold),
           ),
         ),
         SizedBox(
@@ -328,17 +296,20 @@ class ChatMessageWidget extends StatelessWidget {
       padding: const EdgeInsets.all(16),
       color: chatMessageType == ChatMessageType.bot
           ? botBackgroundColor
-          : backgroundColor,
+          : userBackgroundColor,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           chatMessageType == ChatMessageType.bot
               ? Container(
                   margin: const EdgeInsets.only(right: 16.0),
-                  child: CircleAvatar(
-                    backgroundColor: const Color.fromRGBO(16, 163, 127, 1),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(100.0),
+                      color: const Color.fromRGBO(16, 163, 127, 1),
+                    ),
                     child: SvgPicture.asset(
-                      "lib/assets/openAI_logo.svg",
+                      "assets/icons/ChatGPT_logo.svg",
                       height: 30,
                       width: 30,
                     ),
@@ -346,8 +317,11 @@ class ChatMessageWidget extends StatelessWidget {
                 )
               : Container(
                   margin: const EdgeInsets.only(right: 16.0),
-                  child: CircleAvatar(
-                    backgroundImage: const AssetImage("lib/assets/robot.png"),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(100.0),
+                    ),
+                    child: SvgPicture.asset("assets/icons/xd_file.svg"),
                   ),
                 ),
           Expanded(
@@ -358,6 +332,7 @@ class ChatMessageWidget extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.all(8.0),
                   decoration: const BoxDecoration(
+                    color: softwhite,
                     borderRadius: BorderRadius.all(Radius.circular(8.0)),
                   ),
                   child: chatMessageType == ChatMessageType.bot &&
@@ -366,10 +341,6 @@ class ChatMessageWidget extends StatelessWidget {
                           animatedTexts: [
                             TypewriterAnimatedText(
                               text,
-                              textStyle: Theme.of(context)
-                                  .textTheme
-                                  .bodyLarge
-                                  ?.copyWith(color: Colors.white),
                               speed: const Duration(milliseconds: 30),
                             ),
                           ],
@@ -392,45 +363,41 @@ class ChatMessageWidget extends StatelessWidget {
                         )
                       : Text(
                           text,
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyLarge
-                              ?.copyWith(color: Colors.white),
                         ),
                 ),
               ],
             ),
           ),
-          Container(
-            decoration: BoxDecoration(
-                borderRadius: const BorderRadius.all(Radius.circular(8.0)),
-                border: Border.all(color: Colors.white38)),
-            child: Material(
-              color: Colors.transparent,
-              child: InkWell(
-                enableFeedback: true,
-                hoverColor: Colors.teal.shade200,
-                splashColor: Colors.teal.shade100.withOpacity(0.4),
-                borderRadius: const BorderRadius.all(Radius.circular(8.0)),
-                onTap: () {
-                  Clipboard.setData(ClipboardData(text: text));
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text("Copied to clipboard"),
-                      duration: Duration(milliseconds: 600),
-                    ),
-                  );
-                },
-                child: const Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Icon(
-                    Icons.content_copy_rounded,
-                    color: Color.fromRGBO(142, 142, 160, 1),
-                  ),
-                ),
-              ),
-            ),
-          ),
+          // Container(
+          //   decoration: BoxDecoration(
+          //       borderRadius: const BorderRadius.all(Radius.circular(8.0)),
+          //       border: Border.all(color: Colors.white38)),
+          //   child: Material(
+          //     color: Colors.transparent,
+          //     child: InkWell(
+          //       enableFeedback: true,
+          //       hoverColor: Colors.teal.shade200,
+          //       splashColor: Colors.teal.shade100.withOpacity(0.4),
+          //       borderRadius: const BorderRadius.all(Radius.circular(8.0)),
+          //       onTap: () {
+          //         Clipboard.setData(ClipboardData(text: text));
+          //         ScaffoldMessenger.of(context).showSnackBar(
+          //           const SnackBar(
+          //             content: Text("Copied to clipboard"),
+          //             duration: Duration(milliseconds: 600),
+          //           ),
+          //         );
+          //       },
+          //       child: const Padding(
+          //         padding: EdgeInsets.all(8.0),
+          //         child: Icon(
+          //           Icons.content_copy_rounded,
+          //           color: Color.fromRGBO(142, 142, 160, 1),
+          //         ),
+          //       ),
+          //     ),
+          //   ),
+          // ),
         ],
       ),
     );

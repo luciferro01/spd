@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:spd/gpt_advanced/main.dart';
+import 'package:spd/gpt_assistant/chat_gpt/screens/chat_gpt_screen.dart';
 import 'package:spd/tic_tac_toe/screens/tic_tac_toe_screen.dart';
 
 import '../../../../constants/colors.dart';
@@ -14,9 +16,9 @@ class SideMenu extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       children: [
-        Image.asset("assets/images/logo.png"),
+        SvgPicture.asset("assets/icons/logo.svg"),
         DrawerListTile(
-          title: "Dashboard",
+          title: "Tic Tac Toe",
           svgSrc: "assets/icons/menu_dashbord.svg",
           press: () {
             Get.to(() => TicTacToeScreen());
@@ -26,7 +28,7 @@ class SideMenu extends StatelessWidget {
           title: "Gpt for students",
           svgSrc: "assets/icons/menu_tran.svg",
           press: () {
-            Get.to(() => TicTacToeScreen());
+            Get.to(() => ChatPage());
           },
         ),
         DrawerListTile(
@@ -54,7 +56,7 @@ class SideMenu extends StatelessWidget {
           press: () {},
         ),
         DrawerListTile(
-          title: "Settings",
+          title: "Gradient decider",
           svgSrc: "assets/icons/menu_setting.svg",
           press: () {
             Get.to(() => TicTacToeScreen());
