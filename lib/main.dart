@@ -62,25 +62,25 @@ class MyApp extends StatelessWidget {
           name: Routes.onboardingScreen,
           page: () => OnBoardingScreen(),
           transition: Transition.circularReveal,
-          transitionDuration: const Duration(milliseconds: 1500),
+          transitionDuration: const Duration(milliseconds: 500),
         ),
         GetPage(
           name: Routes.authentication,
           page: () => AuthenticationScreen(),
           transition: Transition.rightToLeft,
-          transitionDuration: const Duration(milliseconds: 1500),
+          transitionDuration: const Duration(milliseconds: 500),
         ),
         GetPage(
           name: Routes.chatGpt,
           page: () => ChatGpt(),
           transition: Transition.rightToLeft,
-          transitionDuration: const Duration(milliseconds: 1500),
+          transitionDuration: const Duration(milliseconds: 500),
         ),
         GetPage(
           name: Routes.homeScreen,
           page: () => HomeScreen(),
           transition: Transition.native,
-          transitionDuration: const Duration(milliseconds: 1000),
+          transitionDuration: const Duration(milliseconds: 500),
         ),
         GetPage(
           name: Routes.gradientApp,
@@ -103,6 +103,12 @@ class MyApp extends StatelessWidget {
         GetPage(
           name: Routes.qrcodeScanner,
           page: () => const QrHomePage(),
+          transition: Transition.rightToLeft,
+          transitionDuration: const Duration(milliseconds: 500),
+        ),
+        GetPage(
+          name: Routes.ticTacToe,
+          page: () => TicTacToeScreen(),
           transition: Transition.rightToLeft,
           transitionDuration: const Duration(milliseconds: 500),
         ),
