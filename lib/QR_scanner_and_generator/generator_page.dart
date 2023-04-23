@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'dart:io';
 import 'dart:ui';
 
@@ -5,12 +7,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_colorpicker/flutter_colorpicker.dart';
-import 'package:image_picker/image_picker.dart';
+
 import 'package:pretty_qr_code/pretty_qr_code.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:spd/QR_scanner_and_generator/customize_qr_page.dart';
-import 'package:spd/constants/image_strings.dart';
 import 'package:path_provider/path_provider.dart';
 
 class GeneratorPage extends StatefulWidget {
@@ -25,7 +25,7 @@ class _GeneratorPageState extends State<GeneratorPage> {
   DataToCustomize? receiveCustoms = DataToCustomize(
       DTCedges: false,
       DTCbgColor: Colors.black,
-      DTCfgColor: Color(0xfff3555eb),
+      DTCfgColor: const Color(0xff3555eb),
       DTCimage: null);
 
   final dataController = TextEditingController();
@@ -71,16 +71,18 @@ class _GeneratorPageState extends State<GeneratorPage> {
       await Share.shareFiles([file1],
           text: "Share the QR Code", subject: "link");
     } catch (e) {
-      print(e.toString());
+      debugPrint(e.toString());
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-        child: CupertinoPageScaffold(
+    double height = MediaQuery.of(context).size.height;
+    // double width = MediaQuery.of(context).size.width;
+    return CupertinoPageScaffold(
       backgroundColor: const Color.fromARGB(255, 238, 243, 255),
-      child: Padding(
+      child: Container(
+        margin: EdgeInsets.only(top: height * 0.05),
         padding: const EdgeInsets.all(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -89,38 +91,47 @@ class _GeneratorPageState extends State<GeneratorPage> {
               "Generate QR Code",
               style: TextStyle(fontSize: 30),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  RepaintBoundary(
-                    key: globalKey,
-                    child: Container(
-                      padding: EdgeInsets.all(20),
-                      margin: EdgeInsets.only(
-                          top: 10, bottom: 10, left: 20, right: 20),
-                      height: MediaQuery.of(context).size.height / 3,
-                      width: MediaQuery.of(context).size.height / 3,
-                      color: receiveCustoms!.DTCbgColor,
-                      child: GenerateQR(),
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    RepaintBoundary(
+                      key: globalKey,
+                      child: Container(
+                        clipBehavior: Clip.antiAlias,
+                        padding: const EdgeInsets.all(20),
+                        margin: const EdgeInsets.only(
+                            top: 10, bottom: 10, left: 20, right: 20),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: receiveCustoms!.DTCbgColor,
+                        ),
+                        height: height / 3,
+                        width: height / 3,
+                        child: GenerateQR(),
+                      ),
                     ),
-                  ),
-                  Container(
+
+                    SizedBox(
+                      height: height * 0.06,
+                    ),
+                    Container(
                       clipBehavior: Clip.antiAlias,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
                       ),
-                      height: MediaQuery.of(context).size.height / 10,
+                      height: height / 10,
                       child: CupertinoTextField(
                         controller: dataController,
-                        padding: EdgeInsets.only(
+                        padding: const EdgeInsets.only(
                             top: 12, bottom: 12, right: 15, left: 20),
                         textAlign: TextAlign.start,
-                        maxLines: 5,
-                        prefix: Padding(
+                        maxLines: 1,
+                        prefix: const Padding(
                           padding: EdgeInsets.all(25),
                           child: Text(
                             "Data",
@@ -128,35 +139,41 @@ class _GeneratorPageState extends State<GeneratorPage> {
                                 fontSize: 20, fontWeight: FontWeight.bold),
                           ),
                         ),
-                        style: TextStyle(fontSize: 20),
+                        style: const TextStyle(fontSize: 20),
                         placeholder: "Enter Text or Link here",
-                      )),
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 20, top: 40),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        cardButtons(
-                            "Generate", "internet_icon.png", GenerateQR),
-                        cardButtons("Share", "share_icon.png", _shareqr),
-                        cardButtons("Customize QR code", "internet_icon.png",
-                            CustomizePage),
-                      ],
+                      ),
                     ),
-                  ),
-                  // Column(
-                  //   mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  //   children: [
+                    SizedBox(
+                      height: height * 0.03,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 20, top: 40),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          cardButtons(
+                              "Generate", "internet_icon.png", GenerateQR),
+                          cardButtons("Share", "share_icon.png", _shareqr),
+                          cardButtons("Customize QR code", "internet_icon.png",
+                              CustomizePage),
+                        ],
+                      ),
+                    ),
+                    // Column(
+                    //   mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    //   children: [
 
-                  //   ],
-                  // )
-                ],
+                    //   ],
+                    // )
+                  ],
+                ),
               ),
             ),
           ],
         ),
       ),
-    ));
+      // ),
+    );
   }
 
   Widget cardButtons(String cardText, String inputImage, ontap) {
@@ -164,38 +181,42 @@ class _GeneratorPageState extends State<GeneratorPage> {
       child: InkWell(
         onTap: ontap,
         child: Container(
-            height: 100,
-            width: 100,
-            decoration: BoxDecoration(
-              boxShadow: const [
-                BoxShadow(
-                    offset: Offset.zero,
-                    color: Color(0xfff3555eb),
-                    blurRadius: 10,
-                    spreadRadius: 2,
-                    blurStyle: BlurStyle.outer)
-              ],
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(12),
-              // border:
-              //     Border.all(color: Color(0xfff3555EB), width: 3)
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Image.asset("assets/images/QR_scanner_images/$inputImage"),
-                const SizedBox(
-                  height: 15,
+          height: 100,
+          width: 100,
+          decoration: BoxDecoration(
+            boxShadow: const [
+              BoxShadow(
+                  offset: Offset.zero,
+                  color: Color(0xff3555eb),
+                  blurRadius: 10,
+                  spreadRadius: 2,
+                  blurStyle: BlurStyle.outer)
+            ],
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(12),
+            // border:
+            //     Border.all(color: Color(0xfff3555EB), width: 3)
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Image.asset("assets/images/QR_scanner_images/$inputImage"),
+              const SizedBox(
+                height: 15,
+              ),
+              Text(
+                textAlign: TextAlign.center,
+                cardText,
+                style: const TextStyle(
+                  color: Color(0xff3555eb),
+                  fontWeight: FontWeight.w500,
+                  fontSize: 15,
                 ),
-                Text(
-                  cardText,
-                  style: const TextStyle(
-                      color: Color(0xfff3555eb),
-                      fontWeight: FontWeight.w500,
-                      fontSize: 15),
-                )
-              ],
-            )),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
@@ -203,7 +224,7 @@ class _GeneratorPageState extends State<GeneratorPage> {
 
 class DataToCustomize {
   bool DTCedges = false;
-  Color DTCfgColor = Color(0xfff3555eb);
+  Color DTCfgColor = const Color(0xff3555eb);
   Color DTCbgColor = Colors.black;
   File? DTCimage;
 
