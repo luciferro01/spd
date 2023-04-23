@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/route_manager.dart';
+import 'package:spd/QR_scanner_and_generator/customize_qr_page.dart';
+import 'package:spd/QR_scanner_and_generator/generator_page.dart';
 import 'package:spd/QR_scanner_and_generator/qr_home_page.dart';
 import 'package:spd/authentication/screens/authentication.dart';
 import 'package:spd/gpt_assistant/chat_gpt/screens/chat_gpt_screen.dart';
