@@ -113,7 +113,7 @@ class _ScanResultState extends State<ScanResult> {
               boxShadow: const [
                 BoxShadow(
                     offset: Offset.zero,
-                    color: Color(0xfff3555eb),
+                    color: Color(0xff3555eb),
                     blurRadius: 10,
                     spreadRadius: 2,
                     blurStyle: BlurStyle.outer)
@@ -133,7 +133,7 @@ class _ScanResultState extends State<ScanResult> {
                 Text(
                   cardText,
                   style: const TextStyle(
-                      color: Color(0xfff3555eb),
+                      color: Color(0xff3555eb),
                       fontWeight: FontWeight.w500,
                       fontSize: 15),
                 )

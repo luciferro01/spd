@@ -4,7 +4,6 @@ import 'package:http/http.dart' as http;
 import 'package:spd/constants/api_key.dart';
 import 'dart:convert';
 import 'dart:core';
-
 import '../models/youtube_playlist_data.dart';
 
 const playListUrl =
@@ -30,7 +29,7 @@ class YtLengthCalculatorController extends GetxController {
         for (Map<String, dynamic> index in data) {
           videoIdList.add(YoutubePlaylistData.fromJson(index));
         }
-        print(videoIdList);
+        debugPrint(videoIdList.toString());
         // print(
         //   data['items'].forEach(
         //     (e) => videoIdList.add(
