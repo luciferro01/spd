@@ -57,12 +57,12 @@ class HomeScreen extends StatelessWidget {
     //   route: Routes.ytLengthCalculator,
     //   gradient: Gradients.gentleCare,
     // ),
-    // const HomeScreenCards(
-    //   index: 8,
-    //   image: onbScreen2,
-    //   route: Routes.quickLinks,
-    //   gradient: Gradients.viciousStance,
-    // ),
+    const HomeScreenCards(
+      index: 1,
+      image: onbScreen2,
+      route: Routes.quickLinks,
+      gradient: Gradients.viciousStance,
+    ),
 
     //Still don't know about this one
     // const HomeScreenCards(

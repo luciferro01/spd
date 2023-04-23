@@ -5,8 +5,9 @@ import '../../../constants/api_key.dart';
 import 'package:http/http.dart' as http;
 
 class ChatGptController extends GetxController {
-  bool isPrompt = false;
-  var response = ''.obs;
+  RxBool isPrompt = false.obs;
+  RxString response = ''.obs;
+
   TextEditingController textEditingController = TextEditingController();
   final List<Map<String, String>> messages = [];
   String https = "https://api.openai.com/v1/chat/completions";
@@ -33,7 +34,7 @@ class ChatGptController extends GetxController {
         content = content.trim();
         // isPrompt = true as RxBool;
         debugPrint(content);
-        isPrompt = true;
+        isPrompt.value = true;
         response.value = content;
         debugPrint('$isPrompt');
         return content;
