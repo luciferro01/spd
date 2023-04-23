@@ -18,6 +18,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'error/error_screen.dart';
 
+import 'quick_links/screens/main/components/side_menu.dart';
 import 'splash_screen/screens/splash_screen.dart';
 import 'youtube_playlist_length_calculator/screens/yt_len_cal.dart';
 
@@ -155,9 +156,11 @@ class MyApp extends StatelessWidget {
         name: Routes.errorScreen,
         page: () => ErrorScreen(),
       ),
-      // home: HomeScreen(),
-      home: SplashScreen(),
+      home: HomeScreen(),
+      // home: SplashScreen(),
       // home: YtLengthCalculator(),
+      // home: SideMenu(),
+      // home: SideMenu(),
       // home: ChatGpt(),
     );
   }

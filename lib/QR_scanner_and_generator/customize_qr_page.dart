@@ -163,7 +163,8 @@ class _CustomizeQRState extends State<CustomizeQR> {
                                 child: Text(
                                   textAlign: TextAlign.center,
                                   "Logo\nPreview",
-                                  style: TextStyle(fontSize: 12),
+                                  style: TextStyle(fontSize: 11),
+                                  maxLines: 2,
                                 ),
                               ),
                             ),
