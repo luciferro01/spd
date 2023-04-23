@@ -83,7 +83,7 @@ class Hangman extends StatelessWidget {
                                 color: softBlack,
                               ),
                               Text(
-                                5.toString(),
+                                controller.lives.value.toString(),
                                 style: const TextStyle(
                                   // color: softBlack,
                                   fontSize: 25,
@@ -92,11 +92,13 @@ class Hangman extends StatelessWidget {
                               ),
                             ],
                           ),
-                          Text(
-                            0.toString(),
-                            style: const TextStyle(
-                              fontSize: 25,
-                              fontWeight: FontWeight.w600,
+                          Obx(
+                            () => Text(
+                              controller.score.value.toString(),
+                              style: const TextStyle(
+                                fontSize: 25,
+                                fontWeight: FontWeight.w600,
+                              ),
                             ),
                           ),
                         ],
@@ -107,18 +109,20 @@ class Hangman extends StatelessWidget {
               ),
             ),
             SizedBox(height: height * 0.04),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                ...words[1]
-                    .split('')
-                    .map((String e) => Obx(
-                          () => hiddenWords(
-                              controller.selectedChar.contains(e.toUpperCase()),
-                              e.toUpperCase()),
-                        ))
-                    .toList(),
-              ],
+            Obx(
+              () => Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  ...words[controller.index.value]
+                      .split('')
+                      .map(
+                        (String e) => hiddenWords(
+                            controller.selectedChar.contains(e.toUpperCase()),
+                            e.toUpperCase()),
+                      )
+                      .toList(),
+                ],
+              ),
             ),
             SizedBox(
               height: height * 0.04,
@@ -149,7 +153,10 @@ class Hangman extends StatelessWidget {
                           ),
                           onPressed: () => controller.pressed(
                             e.toUpperCase(),
-                            words[1].toString().toUpperCase(),
+                            words[controller.index.value]
+                                .toString()
+                                .toUpperCase(),
+                            context,
                           ),
                           child: Text(
                             e.toUpperCase(),
