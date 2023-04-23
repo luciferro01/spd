@@ -52,6 +52,10 @@ dependencies:
   http: ^0.13.5
   flutter_card_swiper: ^4.1.2
   flip_card: ^0.7.0
+  pretty_qr_code: ^2.0.3
+  image_picker: ^0.8.7+3
+  flutter_colorpicker: ^1.0.3
+  path_provider: ^2.0.14
 
 dev_dependencies:
   flutter_test:
