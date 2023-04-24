@@ -58,6 +58,7 @@ dependencies:
   whiteboard: ^0.0.2
   animated_text_kit: ^4.2.2
   shared_preferences: ^2.1.0
+  sqflite: ^2.2.7
 
 
 dev_dependencies:
