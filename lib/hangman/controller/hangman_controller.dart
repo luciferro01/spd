@@ -2,7 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../components/hangaman_databse.dart' as score_database;
+import '../models/user_score.dart';
+
 class HangmanController extends GetxController {
+  final database = score_database.openDB();
   RxInt tries = 0.obs;
   RxInt index = 0.obs;
   Rx<Color> color = Colors.black87.obs;
@@ -68,6 +72,12 @@ class HangmanController extends GetxController {
                         lives.value--;
                         selectedChar.value = [];
                         if (lives.value == 0) {
+                          Score userScores = Score(
+                              id: 1,
+                              scoreDate: DateTime.now().toString(),
+                              userScore: score.value);
+                          score_database.manipulateDatabase(
+                              userScores, database);
                           lives.value = 5;
                           score.value = 0;
                           index.value = 0;
