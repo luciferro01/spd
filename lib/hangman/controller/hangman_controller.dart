@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import '../components/hangaman_databse.dart' as score_database;
+import 'package:spd/constants/colors.dart';
+import '../services/hangaman_databse.dart' as score_database;
 import '../models/user_score.dart';
 
 class HangmanController extends GetxController {
@@ -14,6 +14,7 @@ class HangmanController extends GetxController {
   RxInt score = 0.obs;
   RxInt lives = 5.obs;
   String hiddenWord = '';
+
   pressed(String letter, String word, BuildContext context) {
     if (selectedChar.contains(letter)) {
       return null;
@@ -63,9 +64,13 @@ class HangmanController extends GetxController {
                       'You Lost one life',
                       style: TextStyle(fontSize: 25),
                     ),
-                    const SizedBox(height: 20),
-                    const Icon(CupertinoIcons.heart_slash_fill),
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 10),
+                    const Icon(
+                      CupertinoIcons.heart_slash_fill,
+                      color: softBlack,
+                      size: 40,
+                    ),
+                    const SizedBox(height: 10),
                     CupertinoButton.filled(
                       onPressed: () {
                         tries.value = 0;
@@ -91,6 +96,40 @@ class HangmanController extends GetxController {
                   ],
                 ),
               ),
+            ],
+          )),
+    );
+  }
+
+  //Hint Dialog
+  void showHintDialog(BuildContext context, String hint) {
+    showCupertinoDialog(
+      context: (context),
+      builder: ((context) => CupertinoAlertDialog(
+            insetAnimationCurve: Curves.easeIn,
+            actionScrollController: ScrollController(
+              initialScrollOffset: 3,
+              keepScrollOffset: true,
+            ),
+            content: const Text(
+              'The Hint is ',
+              style: TextStyle(fontSize: 25),
+            ),
+            actions: [
+              GestureDetector(
+                onTap: () => Navigator.of(context).pop(),
+                child: Center(
+                  child: Container(
+                    padding: const EdgeInsets.all(20),
+                    child: Text(
+                      hint,
+                      style: const TextStyle(
+                          fontSize: 30, fontWeight: FontWeight.w600),
+                    ),
+                    // const SizedBox(height: 20),
+                  ),
+                ),
+              )
             ],
           )),
     );

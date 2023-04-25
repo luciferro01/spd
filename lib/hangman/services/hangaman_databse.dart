@@ -27,13 +27,10 @@ Future<void> insertScore(Score score, final database) async {
 }
 
 Future<List<Score>> scores(final database) async {
-  // Get a reference to the database.
   final Database db = await database;
 
-  // Query the table for all The Dogs.
   final List<Map<String, dynamic>> maps = await db.query('scores');
 
-  // Convert the List<Map<String, dynamic> into a List<Dog>.
   return List.generate(maps.length, (i) {
     return Score(
       id: maps[i]['id'],
@@ -44,16 +41,12 @@ Future<List<Score>> scores(final database) async {
 }
 
 Future<void> updateScore(Score score, final database) async {
-  // Get a reference to the database.
   final db = await database;
 
-  // Update the given Dog.
   await db.update(
     'scores',
     score.toMap(),
-    // Ensure that the Dog has a matching id.
     where: "id = ?",
-    // Pass the Dog's id as a whereArg to prevent SQL injection.
     whereArgs: [score.id],
   );
 }
@@ -62,17 +55,15 @@ Future<void> deleteScore(int id, final database) async {
   // Get a reference to the database.
   final db = await database;
 
-  // Remove the Dog from the database.
   await db.delete(
     'scores',
-    // Use a `where` clause to delete a specific dog.
     where: "id = ?",
-    // Pass the Dog's id as a whereArg to prevent SQL injection.
     whereArgs: [id],
   );
 }
 
 void manipulateDatabase(Score scoreObject, final database) async {
   await insertScore(scoreObject, database);
+  //ignore:avoid_print
   print(await scores(database));
 }
