@@ -11,7 +11,16 @@ class Hangman extends StatelessWidget {
   Hangman({super.key});
   final controller = Get.put(HangmanController());
   String alphabets = 'abcdefghijklmnopqrstuvwxyz';
-  List<dynamic> words = ['Hello', 'My', 'Name', 'Is', 'MOHIL', 'BANSAL'];
+  // List<dynamic> words = ['Hello', 'My', 'Name', 'Is', 'MOHIL', 'BANSAL'];
+  List<Map<String, String>> words = [
+    //Maximum word Limit is PANTHER
+    {'type': 'Animal', 'word': 'Lion'},
+    {'type': 'Fruits', 'word': 'Apple'},
+    {'type': 'Country', 'word': 'india'},
+    {'type': 'Country', 'word': 'USA'},
+    {'type': 'Animal', 'word': 'Panther'},
+    {'type': 'Fruits', 'word': 'Mango'},
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -21,17 +30,10 @@ class Hangman extends StatelessWidget {
       style: const TextStyle(color: Colors.white),
       child: CupertinoPageScaffold(
         backgroundColor: ticTacToeBackgroundColor,
-        // child: const Center(
-        //   child: Text(
-        //     'Working on it 😅',
-        //     style: TextStyle(fontSize: 40),
-        //   ),
-        // ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            // const Spacer(flex: 6),
             Container(
               padding: const EdgeInsets.all(0),
               child: const Text(
@@ -104,6 +106,33 @@ class Hangman extends StatelessWidget {
                         ],
                       ),
                     ),
+                    Positioned(
+                      bottom: 0,
+                      left: 20,
+                      right: 20,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          GestureDetector(
+                            onTap: () => controller.showHintDialog(context,
+                                words[controller.index.value]['type']!),
+                            child: const Icon(
+                              CupertinoIcons.lightbulb_fill,
+                              size: 40,
+                              color: softBlack,
+                            ),
+                          ),
+                          GestureDetector(
+                            onTap: () {},
+                            child: const Icon(
+                              CupertinoIcons.book_solid,
+                              size: 40,
+                              color: softBlack,
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -113,7 +142,11 @@ class Hangman extends StatelessWidget {
               () => Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  ...words[controller.index.value]
+                  // ListView(
+                  //   shrinkWrap: true,
+                  //   scrollDirection: Axis.horizontal,
+                  //   children: [
+                  ...words[controller.index.value]['word']!
                       .split('')
                       .map(
                         (String e) => hiddenWords(
@@ -121,6 +154,16 @@ class Hangman extends StatelessWidget {
                             e.toUpperCase()),
                       )
                       .toList(),
+                  //   ],
+                  // )
+                  // ...words[controller.index.value]['word']!
+                  //     .split('')
+                  //     .map(
+                  //       (String e) => hiddenWords(
+                  //           controller.selectedChar.contains(e.toUpperCase()),
+                  //           e.toUpperCase()),
+                  //     )
+                  //     .toList(),
                 ],
               ),
             ),
@@ -153,7 +196,7 @@ class Hangman extends StatelessWidget {
                           ),
                           onPressed: () => controller.pressed(
                             e.toUpperCase(),
-                            words[controller.index.value]
+                            words[controller.index.value]['word']
                                 .toString()
                                 .toUpperCase(),
                             context,
