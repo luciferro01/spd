@@ -1,5 +1,3 @@
-import 'package:shared_preferences/shared_preferences.dart';
-
 class Link {
   final String? icon, title, description, url, subtitle;
 
@@ -29,7 +27,7 @@ List<Link> demoLinks = [
     title: "Natural Reader",
     description: "Your personal reader",
     subtitle:
-        "Natural Reader is a professional text to speech program that converts any written text into spoken words. The paid versions of Natural Reader have many more features.",
+        "(DEV's CHOICE) \nNatural Reader is a professional text to speech program that converts any written text into spoken words. The paid versions of Natural Reader have many more features.",
   ),
   Link(
     url: "https://tome.app",
@@ -113,24 +111,19 @@ List<Link> demoLinks = [
     url: "https://www.craiyon.com/",
     icon: "assets/icons/craiyon.svg",
     title: "Craiyon",
-    description: "Free text to image",
-    subtitle:
-        "Craiyon is a free tool that allows you generate images from texts",
+    description: "Create a logo",
   ),
-
   Link(
-      url: "https://www.midjourney.com/",
-      icon: "assets/icons/midjourney_adobe_express.svg",
-      title: "Midjourney",
-      description: "Explore new mediums of thought",
-      subtitle:
-          "Midjourney is an independent research lab exploring new mediums of thought and expanding the imaginative powers of the human species."),
+    url: "https://www.midjourney.com/",
+    icon: "assets/icons/xd_file.svg",
+    title: "Midjourney",
+    description: "Create a logo",
+  ),
   Link(
-      url: "https://openai.com/product/dall-e-2",
-      icon: "assets/icons/dall_e.svg",
-      title: "Dall-E",
-      description: "Text to image at best",
-      subtitle:
-          "DALL·E is a 12-billion parameter version of GPT-3 trained to generate images from text descriptions, using a dataset of text–image pairs."),
+    url: "https://openai.com/product/dall-e-2",
+    icon: "assets/icons/xd_file.svg",
+    title: "Dall-E",
+    description: "Create a logo",
+  ),
 ];
 // first 4

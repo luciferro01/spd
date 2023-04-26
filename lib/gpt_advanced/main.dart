@@ -1,17 +1,19 @@
 import 'dart:convert';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:spd/constants/colors.dart';
+import 'package:spd/constants/paddings.dart';
 import 'package:spd/keys.dart';
+import 'package:spd/quick_links/responsive.dart';
 
 const backgroundColor = Color.fromARGB(255, 255, 255, 255);
-
 const botTextColor = Color(0xffe5e5e5);
-const botBackgroundColor = Color(0xff5896EB);
+const botBackgroundColor = Color.fromARGB(255, 158, 199, 255);
 const userTextColor = Color.fromARGB(255, 0, 0, 0);
 const userBackgroundColor = Color(0xffe5e5e5);
 
@@ -22,7 +24,7 @@ class ChatPage extends StatefulWidget {
   State<ChatPage> createState() => _ChatPageState();
 }
 
-Future<String> generateResponse(String prompt) async {
+Future<String> generateResponse(context, String prompt) async {
   const apiKey = chatGPTApiKey; //apiSecretKey;
 
   var url = Uri.https("api.openai.com", "/v1/completions");
@@ -33,13 +35,13 @@ Future<String> generateResponse(String prompt) async {
       "Authorization": "Bearer $apiKey"
     },
     body: json.encode({
-      "model": "text-davinci-003",
+      "model": "text-davinci-002",
       "prompt": prompt,
-      'temperature': 0,
-      'max_tokens': 700,
-      'top_p': 1,
+      'temperature': 0.9,
+      'max_tokens': Responsive.isDesktop(context) ? 700 : 150,
+      'top_p': 1.0,
       'frequency_penalty': 0.0,
-      'presence_penalty': 0.0,
+      'presence_penalty': 0.6,
     }),
   );
 
@@ -68,41 +70,41 @@ class _ChatPageState extends State<ChatPage> {
     MediaQueryData mediaQuery = MediaQuery.of(context);
     return CupertinoPageScaffold(
       backgroundColor: backgroundColor,
-      // navigationBar: ,
-
+      navigationBar: CupertinoNavigationBar(
+        backgroundColor: backgroundColor,
+        middle: Text(
+          "Chatbot",
+          style: Theme.of(context).textTheme.titleMedium,
+        ),
+      ),
       child: SafeArea(
         child: Column(
           children: [
             Expanded(
               child: _messages.isEmpty
-                  ? const flexCardGpt(
+                  ? flexCardGpt(
                       icon: CupertinoIcons.lightbulb_fill,
-                      color: softwhite,
+                      color: softBlack,
                       text: "A chatbot powered by OpenAI's GPT-3")
                   : _buildList(),
             ),
-            Visibility(
-              visible: isLoading,
-              child: const CupertinoActivityIndicator(
-                color: softBlack,
+            Center(
+              child: Visibility(
+                visible: isLoading,
+                child: const CupertinoActivityIndicator(
+                  color: userTextColor,
+                  radius: 8,
+                ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                children: [
-                  CupertinoButton(
-                      onPressed: () {
-                        Get.back();
-                      },
-                      child: const Icon(
-                        CupertinoIcons.back,
-                        color: userTextColor,
-                      )),
-                  _buildInput(),
-                  _buildSubmit(),
-                ],
-              ),
+            Row(
+              children: [
+                SizedBox(
+                  width: 10,
+                ),
+                _buildInput(),
+                _buildSubmit(),
+              ],
             ),
           ],
         ),
@@ -114,10 +116,7 @@ class _ChatPageState extends State<ChatPage> {
     return Visibility(
       visible: !isLoading,
       child: CupertinoButton(
-        child: const Icon(
-          CupertinoIcons.search,
-          color: Color.fromRGBO(142, 142, 160, 1),
-        ),
+        child: const Icon(CupertinoIcons.add_circled, color: softBlack),
         onPressed: () async {
           if (_textController.text != "") {
             setState(
@@ -136,7 +135,7 @@ class _ChatPageState extends State<ChatPage> {
             _textController.clear();
             Future.delayed(const Duration(milliseconds: 50))
                 .then((_) => _scrollDown());
-            generateResponse(input).then((value) {
+            generateResponse(context, input).then((value) {
               setState(() {
                 isLoading = false;
                 _messages.add(
@@ -164,8 +163,25 @@ class _ChatPageState extends State<ChatPage> {
   Expanded _buildInput() {
     return Expanded(
       child: CupertinoTextField(
+        maxLines: 1,
+        clearButtonMode: OverlayVisibilityMode.editing,
+        placeholder: "Type a message",
+        textAlign: TextAlign.start, padding: EdgeInsets.all(10),
+        // showCursor: false,
+        cursorColor: softBlack,
+        cursorHeight: defaultPadding,
+        placeholderStyle: TextStyle(
+            color: softBlack, fontSize: 16, fontWeight: FontWeight.w400),
+        decoration: BoxDecoration(
+          color: softwhite,
+          border: Border.all(color: softBlack, width: 0.5),
+          borderRadius: BorderRadius.circular(20),
+        ),
+        textAlignVertical: TextAlignVertical.center,
+
+        textInputAction: TextInputAction.send,
         textCapitalization: TextCapitalization.sentences,
-        style: const TextStyle(color: softBlack),
+        // style: const TextStyle(color: softwhite),
         controller: _textController,
         onSubmitted: (str) {
           if (str != "") {
@@ -185,7 +201,7 @@ class _ChatPageState extends State<ChatPage> {
             _textController.clear();
             Future.delayed(const Duration(milliseconds: 50))
                 .then((_) => _scrollDown());
-            generateResponse(input).then((value) {
+            generateResponse(context, input).then((value) {
               setState(() {
                 isLoading = false;
                 _messages.add(
@@ -235,13 +251,13 @@ class _ChatPageState extends State<ChatPage> {
 class flexCardGpt extends StatelessWidget {
   const flexCardGpt({
     Key? key,
-    required this.icon,
-    required this.color,
-    required this.text,
+    this.icon,
+    this.color,
+    this.text,
   }) : super(key: key);
-  final IconData icon;
-  final Color color;
-  final String text;
+  final icon;
+  final color;
+  final text;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -293,10 +309,11 @@ class ChatMessageWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 10.0),
-      padding: const EdgeInsets.all(16),
-      color: chatMessageType == ChatMessageType.bot
-          ? botBackgroundColor
-          : userBackgroundColor,
+      padding: chatMessageType == ChatMessageType.bot
+          ? EdgeInsets.only(
+              left: 16.0, right: MediaQuery.of(context).size.width * 0.4)
+          : EdgeInsets.only(right: MediaQuery.of(context).size.width * 0.4),
+      color: backgroundColor,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -331,9 +348,11 @@ class ChatMessageWidget extends StatelessWidget {
               children: <Widget>[
                 Container(
                   padding: const EdgeInsets.all(8.0),
-                  decoration: const BoxDecoration(
-                    color: softwhite,
-                    borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                  decoration: BoxDecoration(
+                    color: chatMessageType == ChatMessageType.bot
+                        ? botBackgroundColor
+                        : userBackgroundColor,
+                    borderRadius: const BorderRadius.all(Radius.circular(8.0)),
                   ),
                   child: chatMessageType == ChatMessageType.bot &&
                           text == _messages.last.text
@@ -363,6 +382,10 @@ class ChatMessageWidget extends StatelessWidget {
                         )
                       : Text(
                           text,
+                          style: TextStyle(
+                            color: userTextColor,
+                            fontSize: 16,
+                          ),
                         ),
                 ),
               ],

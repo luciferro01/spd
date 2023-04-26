@@ -6,6 +6,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../constants/colors.dart';
 import '../../../../constants/paddings.dart';
+import '../../../responsive.dart';
 
 class FileInfoCard extends StatelessWidget {
   const FileInfoCard({
@@ -30,7 +31,7 @@ class FileInfoCard extends StatelessWidget {
         }
       },
       child: Container(
-        padding: const EdgeInsets.all(defaultPadding),
+        padding: const EdgeInsets.all(12),
         decoration: const BoxDecoration(
           color: softwhite,
           borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -66,35 +67,20 @@ class FileInfoCard extends StatelessWidget {
                 SizedBox(
                   width: 1,
                 )
-                // SvgPicture.asset("assets/icons/menu_setting.svg")
               ],
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 20.0, left: 8.0),
+              padding: EdgeInsets.only(
+                  top: Responsive.isDesktop(context) ? 20 : 8.0, left: 8.0),
               child: Text(
                 info.subtitle!,
-                maxLines: 6,
+                maxLines: Responsive.isDesktop(context) ? 6 : 4,
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(
                   fontSize: 13,
                 ),
               ),
             ),
-            // ProgressLine(
-            //   color: info.color,
-            //   percentage: info.percentage,
-            // ),
-            // Row(
-            //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            //   children: [
-            //     Text(
-            //       "${info.numOfFiles} Files",
-            //     ),
-            //     Text(
-            //       info.totalStorage!,
-            //     ),
-            //   ],
-            // )
           ],
         ),
       ),
