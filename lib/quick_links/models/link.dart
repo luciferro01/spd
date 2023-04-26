@@ -29,7 +29,7 @@ List<Link> demoLinks = [
     title: "Natural Reader",
     description: "Your personal reader",
     subtitle:
-        "Natural Reader is a professional text to speech program that converts any written text into spoken words. The paid versions of Natural Reader have many more features.",
+        "(DEV's CHOICE) \nNatural Reader is a professional text to speech program that converts any written text into spoken words. The paid versions of Natural Reader have many more features.",
   ),
   Link(
     url: "https://tome.app",
