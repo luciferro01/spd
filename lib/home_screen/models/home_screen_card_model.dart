@@ -5,17 +5,13 @@ import '../../constants/apps.dart';
 
 class HomeScreenCards extends StatelessWidget {
   final String image;
-  // final String appName;
   final String route;
-  // final String descriptionText;
   final List<Color> gradient;
   final int index;
   const HomeScreenCards(
       {super.key,
       required this.image,
-      // required this.appName,
       required this.route,
-      // required this.descriptionText,
       required this.gradient,
       required this.index});
 
@@ -24,9 +20,6 @@ class HomeScreenCards extends StatelessWidget {
     return GestureDetector(
         onTap: () {
           Get.toNamed(route);
-          // Navigator.push(context, MaterialPageRoute(builder: (context) {
-          // return SplashScreen();
-          // }));
         },
         child: Container(
           decoration: BoxDecoration(
@@ -37,12 +30,11 @@ class HomeScreenCards extends StatelessWidget {
             ),
             boxShadow: const [
               BoxShadow(
-                  color: softBlack,
-                  blurRadius: 4,
-                  blurStyle: BlurStyle.normal,
-                  offset: Offset(2, 6)
-                  // spreadRadius: 4,
-                  )
+                color: softBlack,
+                blurRadius: 4,
+                blurStyle: BlurStyle.normal,
+                offset: Offset(2, 6),
+              )
             ],
             borderRadius: BorderRadius.circular(20),
             color: Colors.amber,
@@ -65,22 +57,12 @@ class HomeScreenCards extends StatelessWidget {
                       bottomLeft: Radius.circular(20),
                       bottomRight: Radius.circular(20),
                     ),
-                    // boxShadow: [
-                    //   BoxShadow(
-                    //     spreadRadius: 0,
-                    //     offset: Offset(0, -4),
-                    //     color: softBlack,
-                    //     blurStyle: BlurStyle.outer,
-                    //     blurRadius: 34,
-                    //   )
-                    // ],
                   ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        // appsappName[index],
                         appList[index]['appName'],
                         softWrap: true,
                         maxLines: 1,
@@ -91,6 +73,7 @@ class HomeScreenCards extends StatelessWidget {
                         ),
                       ),
                       // FittedBox(
+                      //   fit: BoxFit.cover,
                       //   child:
                       Text(
                         appList[index]['description'],
@@ -99,6 +82,7 @@ class HomeScreenCards extends StatelessWidget {
                         overflow: TextOverflow.ellipsis,
                         style: const TextStyle(fontSize: 16),
                       ),
+                      // ),
                       // )
                     ],
                   ),

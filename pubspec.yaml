@@ -44,9 +44,12 @@ dependencies:
   firebase_core: ^2.9.0
   firebase_auth: ^4.4.0
 
-  flutter_barcode_scanner: 
+  flutter_barcode_scanner:
   url_launcher: ^6.1.10
   share_plus: ^6.3.2
+  image_picker: ^0.8.7+4
+  pretty_qr_code: ^2.0.3
+  flutter_colorpicker: ^1.0.3
 
   # dio: ^5.1.1
   http: ^0.13.5
@@ -55,6 +58,8 @@ dependencies:
   whiteboard: ^0.0.2
   animated_text_kit: ^4.2.2
   shared_preferences: ^2.1.0
+  sqflite: ^2.2.7
+
 
 dev_dependencies:
   flutter_test:
@@ -90,6 +95,7 @@ flutter:
     - assets/images/QR_scanner_images/
     - assets/icons/
     - assets/images/
+    - assets/figures/
 
   #   - images/a_dot_ham.jpeg
 

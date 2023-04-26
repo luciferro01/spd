@@ -2,31 +2,24 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/route_manager.dart';
+
 import 'package:spd/QR_scanner_and_generator/qr_home_page.dart';
 import 'package:spd/authentication/screens/authentication.dart';
 import 'package:spd/gpt_advanced/main.dart';
 import 'package:spd/gpt_assistant/chat_gpt/screens/chat_gpt_screen.dart';
 import 'package:spd/gradients_app/screen/gradients_app.dart';
+import 'package:spd/hangman/screens/hangman.dart';
 import 'package:spd/home_screen/screens/home_screen.dart';
 import 'package:spd/onboarding_screen/screens/onboarding_screen.dart';
+
 import 'package:spd/quick_links/screens/main/main_screen.dart';
 import 'package:spd/tic_tac_toe/screens/tic_tac_toe_screen.dart';
 import 'constants/routes.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'error/error_screen.dart';
-import 'splash_screen/screens/splash_screen.dart';
-import 'youtube_playlist_length_calculator/screens/yt_len_cal.dart';
-import 'package:spd/authentication/screens/authentication.dart';
-import 'package:spd/gpt_assistant/chat_gpt/screens/chat_gpt_screen.dart';
-import 'package:spd/gradients_app/screen/gradients_app.dart';
-import 'package:spd/home_screen/screens/home_screen.dart';
-import 'package:spd/onboarding_screen/screens/onboarding_screen.dart';
-import 'package:spd/quick_links/screens/main/main_screen.dart';
-import 'constants/routes.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'firebase_options.dart';
-import 'error/error_screen.dart';
+
+import 'quick_links/screens/main/components/side_menu.dart';
 import 'splash_screen/screens/splash_screen.dart';
 import 'youtube_playlist_length_calculator/screens/yt_len_cal.dart';
 
@@ -84,6 +77,12 @@ class MyApp extends StatelessWidget {
         GetPage(
           name: Routes.chatGpt,
           page: () => ChatGpt(),
+          transition: Transition.rightToLeft,
+          transitionDuration: const Duration(milliseconds: 500),
+        ),
+        GetPage(
+          name: Routes.chatPage,
+          page: () => const ChatPage(),
           transition: Transition.rightToLeft,
           transitionDuration: const Duration(milliseconds: 500),
         ),
@@ -153,13 +152,23 @@ class MyApp extends StatelessWidget {
           transition: Transition.rightToLeft,
           transitionDuration: const Duration(milliseconds: 500),
         ),
+        GetPage(
+          name: Routes.hangman,
+          page: () => Hangman(),
+          transition: Transition.rightToLeft,
+          transitionDuration: const Duration(milliseconds: 500),
+        ),
       ],
       unknownRoute: GetPage(
         name: Routes.errorScreen,
         page: () => ErrorScreen(),
-        // transition: Transition.cupertino,
       ),
-      home: HomeScreen(),
+      // home: HomeScreen(),
+      home: SplashScreen(),
+      // home: YtLengthCalculator(),
+      // home: SideMenu(),
+      // home: SideMenu(),
+      // home: ChatGpt(),
     );
   }
 }

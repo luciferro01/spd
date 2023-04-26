@@ -1,13 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
-import '../../constants/colors.dart';
-
-// import '../../constants/colors.dart';
-
 class TicTacToeController extends GetxController {
   RxBool oTurn = true.obs;
-  RxString turn = ''.obs;
+  RxString turn = 'O'.obs;
   RxList turns = [
     '',
     '',
@@ -20,6 +16,8 @@ class TicTacToeController extends GetxController {
     '',
   ].obs;
   RxInt filledBoxes = 0.obs;
+  RxInt oScore = 0.obs;
+  RxInt xScore = 0.obs;
 
 //On Tapping the Grid Container
 
@@ -42,44 +40,6 @@ class TicTacToeController extends GetxController {
   }
 
   void showWinnerDialog(String data, BuildContext context) {
-    // Get.showSnackbar(
-    //   GetSnackBar(
-    //     animationDuration: const Duration(milliseconds: 500),
-    //     isDismissible: true,
-    //     // snackPosition: SnackPosition.TOP,
-    //     backgroundColor: ticTacToeBackgroundColor,
-    //     messageText: Column(
-    //       children: [
-    //         data != 'Draw'
-    //             ? Text(
-    //                 '$data!!',
-    //                 style: const TextStyle(
-    //                   fontSize: 60,
-    //                   fontWeight: FontWeight.w800,
-    //                 ),
-    //               )
-    //             : Text(
-    //                 data,
-    //                 style: const TextStyle(
-    //                   fontSize: 60,
-    //                   fontWeight: FontWeight.w800,
-    //                 ),
-    //               ),
-    //         const Text(
-    //           'Won the Game',
-    //           style: TextStyle(
-    //             fontSize: 30,
-    //           ),
-    //         ),
-    //         CupertinoButton.filled(
-    //           onPressed: reset,
-    //           child: const Text('Play Again'),
-    //         )
-    //       ],
-    //     ),
-    //     duration: Duration(seconds: 2),
-    //   ),
-    // );
     showCupertinoDialog(
       context: (context),
       builder: ((context) => CupertinoAlertDialog(
@@ -108,12 +68,19 @@ class TicTacToeController extends GetxController {
                               fontWeight: FontWeight.w800,
                             ),
                           ),
-                    const Text(
-                      'Won the Game',
-                      style: TextStyle(
-                        fontSize: 30,
-                      ),
-                    ),
+                    data != 'Draw'
+                        ? const Text(
+                            'Won the Game',
+                            style: TextStyle(
+                              fontSize: 30,
+                            ),
+                          )
+                        : const Text(
+                            'Play Again',
+                            style: TextStyle(
+                              fontSize: 30,
+                            ),
+                          ),
                     CupertinoButton.filled(
                       onPressed: () {
                         reset();
@@ -127,6 +94,11 @@ class TicTacToeController extends GetxController {
             ],
           )),
     );
+    if (data == 'O') {
+      oScore.value++;
+    } else if (data == 'X') {
+      xScore.value++;
+    }
   }
 
   void checkWinner(BuildContext context) {
@@ -140,6 +112,8 @@ class TicTacToeController extends GetxController {
       showWinnerDialog(turns[0], context);
     } else if (turns[1] == turns[4] && turns[1] == turns[7] && turns[1] != '') {
       showWinnerDialog(turns[1], context);
+    } else if (turns[2] == turns[5] && turns[2] == turns[8] && turns[2] != '') {
+      showWinnerDialog(turns[2], context);
     } else if (turns[2] == turns[4] && turns[2] == turns[6] && turns[2] != '') {
       showWinnerDialog(turns[2], context);
     } else if (turns[0] == turns[4] && turns[0] == turns[8] && turns[0] != '') {
@@ -163,5 +137,12 @@ class TicTacToeController extends GetxController {
       '',
     ].toList();
     filledBoxes.value = 0;
+    // turn.value = 'O';
+  }
+
+  void hardReset() {
+    reset();
+    oScore.value = 0;
+    xScore.value = 0;
   }
 }
