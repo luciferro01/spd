@@ -111,8 +111,8 @@ class MyApp extends StatelessWidget {
           transitionDuration: const Duration(milliseconds: 1500),
         ),
         GetPage(
-          name: Routes.chatGpt,
-          page: () => ChatGpt(),
+          name: Routes.chatPage,
+          page: () => const ChatPage(),
           transition: Transition.rightToLeft,
           transitionDuration: const Duration(milliseconds: 1500),
         ),

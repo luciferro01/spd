@@ -18,6 +18,18 @@ class HomeScreen extends StatelessWidget {
       gradient: Gradients.passionateRed,
     ),
     const HomeScreenCards(
+      index: 2,
+      image: onbScreen3,
+      route: Routes.chatPage,
+      gradient: Gradients.aquaSplash,
+    ),
+    const HomeScreenCards(
+      index: 3,
+      image: onbScreen1,
+      route: Routes.splashScreen,
+      gradient: Gradients.eternalConstance,
+    ),
+    const HomeScreenCards(
       index: 4,
       image: onbScreen2,
       route: Routes.hangman,
@@ -61,12 +73,11 @@ class HomeScreen extends StatelessWidget {
       gradient: Gradients.viciousStance,
     ),
     const HomeScreenCards(
-      index: 3,
-      image: onbScreen1,
-      route: Routes.gradientApp,
-      gradient: Gradients.happyFisher,
+      index: 9,
+      image: onbScreen2,
+      route: Routes.chatPage,
+      gradient: Gradients.viciousStance,
     ),
-    //Still don't know about this one
     // const HomeScreenCards(
     //   index: 9,
     //   image: onbScreen1,
