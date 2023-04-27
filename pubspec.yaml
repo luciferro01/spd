@@ -61,7 +61,6 @@ dependencies:
   sqflite: ^2.2.7
   hidden_drawer_menu: ^3.0.1
 
-
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -94,6 +93,7 @@ flutter:
     - assets/logo/
     - assets/images/onborading_screen_images/
     - assets/images/QR_scanner_images/
+    - assets/images/develeopers_images/
     - assets/icons/
     - assets/images/
     - assets/figures/

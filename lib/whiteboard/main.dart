@@ -12,8 +12,9 @@ class _WhiteboardState extends State<Whiteboard> {
   @override
   Widget build(BuildContext context) {
     return Hero(
-        tag: "whiteboard",
-        child: WhiteBoard(
-            key: const Key("whiteboard"), controller: widget.controller));
+      tag: "whiteboard",
+      child: WhiteBoard(
+          key: const Key("whiteboard"), controller: widget.controller),
+    );
   }
 }
