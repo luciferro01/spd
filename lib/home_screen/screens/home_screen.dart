@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_card_swiper/flutter_card_swiper.dart';
 import 'package:get/get.dart';
 import 'package:spd/constants/image_strings.dart';
@@ -7,9 +8,14 @@ import 'package:spd/home_screen/models/home_screen_card_model.dart';
 import '../../constants/gradients.dart';
 import '../../constants/routes.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   HomeScreen({super.key});
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   final List cards = [
     const HomeScreenCards(
       index: 0,
@@ -133,6 +139,51 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
     );
+
+    // return Material(
+    // navigationBar: const CupertinoNavigationBar(
+    //   middle: Text(
+    //     'Super App',
+    //     style: TextStyle(fontSize: 25),
+    //   ),
+    // leading: Icon(CupertinoIcons.list_bullet),
+    // leading: Icon(CupertinoIcons.bars),
+    // leading: Icon(CupertinoIcons.list_dash),
+    // leading: Icon(CupertinoIcons.clear, color: softBlack),
+    // leading: CupertinoButton(
+    //   padding: const EdgeInsets.all(0),
+    //   child: controller.isOpened.value
+    //       ? const Icon(
+    //           CupertinoIcons.clear_thick,
+    //           size: 30,
+    //         )
+    //       : const Icon(
+    //           CupertinoIcons.bars,
+    //           size: 30,
+    //         ),
+    //   onPressed: () {
+    //     controller.isOpened.value
+    //         ? controller.isOpened.value = false
+    //         : controller.isOpened.value = true;
+    //   },
+    // ),
+    // ),
+    //   child: Scaffold(
+    //     appBar: AppBar(
+    //       title: Text('Hello'),
+    //     ),
+    //     body: Container(
+    //       margin: EdgeInsets.only(
+    //           left: 10, right: 10, top: height * 0.12, bottom: height * 0.1),
+    //       width: double.infinity,
+    //       height: height * 0.8,
+    //       child: CardSwiper(
+    //         cardsCount: cards.length,
+    //         cardBuilder: (context, index) => cards[index],
+    //       ),
+    //     ),
+    //   ),
+    // );
   }
 }
 
