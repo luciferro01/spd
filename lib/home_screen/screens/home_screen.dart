@@ -19,21 +19,34 @@ class HomeScreen extends StatelessWidget {
     ),
     const HomeScreenCards(
       index: 2,
+      image: qrCodeScanner,
+      route: Routes.qrcodeScanner,
+      gradient: Gradients.nightSky,
+    ),
+    const HomeScreenCards(
+      index: 5,
       image: onbScreen3,
       route: Routes.chatPage,
       gradient: Gradients.aquaSplash,
-    ),
-    const HomeScreenCards(
-      index: 3,
-      image: onbScreen1,
-      route: Routes.splashScreen,
-      gradient: Gradients.eternalConstance,
     ),
     const HomeScreenCards(
       index: 4,
       image: onbScreen2,
       route: Routes.hangman,
       gradient: Gradients.healthyWater,
+    ),
+    const HomeScreenCards(
+      index: 3,
+      image: onbScreen1,
+      route: Routes.gradientApp,
+      gradient: Gradients.eternalConstance,
+    ),
+
+    const HomeScreenCards(
+      index: 1,
+      image: onbScreen3,
+      route: Routes.quickLinks,
+      gradient: Gradients.aquaSplash,
     ),
     // const HomeScreenCards(
     //   index: 3,
@@ -48,36 +61,25 @@ class HomeScreen extends StatelessWidget {
     //   route: Routes.splashScreen,
     //   gradient: Gradients.morningSalad,
     // ),
-    const HomeScreenCards(
-      index: 2,
-      image: qrCodeScanner,
-      route: Routes.qrcodeScanner,
-      gradient: Gradients.nightSky,
-    ),
-    const HomeScreenCards(
-      index: 5,
-      image: onbScreen3,
-      route: Routes.chatPage,
-      gradient: Gradients.aquaSplash,
-    ),
+
     // const HomeScreenCards(
     //   index: 7,
     //   image: onbScreen2,
     //   route: Routes.ytLengthCalculator,
     //   gradient: Gradients.gentleCare,
     // ),
-    const HomeScreenCards(
-      index: 1,
-      image: onbScreen2,
-      route: Routes.quickLinks,
-      gradient: Gradients.viciousStance,
-    ),
-    const HomeScreenCards(
-      index: 9,
-      image: onbScreen2,
-      route: Routes.chatPage,
-      gradient: Gradients.viciousStance,
-    ),
+    // const HomeScreenCards(
+    //   index: 1,
+    //   image: onbScreen2,
+    //   route: Routes.quickLinks,
+    //   gradient: Gradients.viciousStance,
+    // ),
+    // const HomeScreenCards(
+    //   index: 9,
+    //   image: onbScreen2,
+    //   route: Routes.chatPage,
+    //   gradient: Gradients.viciousStance,
+    // ),
     // const HomeScreenCards(
     //   index: 9,
     //   image: onbScreen1,
@@ -90,11 +92,11 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
+    // double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return CupertinoPageScaffold(
-      navigationBar: CupertinoNavigationBar(
-        middle: const Text(
+      navigationBar: const CupertinoNavigationBar(
+        middle: Text(
           'Super App',
           style: TextStyle(fontSize: 25),
         ),
@@ -102,23 +104,23 @@ class HomeScreen extends StatelessWidget {
         // leading: Icon(CupertinoIcons.bars),
         // leading: Icon(CupertinoIcons.list_dash),
         // leading: Icon(CupertinoIcons.clear, color: softBlack),
-        leading: CupertinoButton(
-          padding: const EdgeInsets.all(0),
-          child: controller.isOpened.value
-              ? const Icon(
-                  CupertinoIcons.clear_thick,
-                  size: 30,
-                )
-              : const Icon(
-                  CupertinoIcons.bars,
-                  size: 30,
-                ),
-          onPressed: () {
-            controller.isOpened.value
-                ? controller.isOpened.value = false
-                : controller.isOpened.value = true;
-          },
-        ),
+        // leading: CupertinoButton(
+        //   padding: const EdgeInsets.all(0),
+        //   child: controller.isOpened.value
+        //       ? const Icon(
+        //           CupertinoIcons.clear_thick,
+        //           size: 30,
+        //         )
+        //       : const Icon(
+        //           CupertinoIcons.bars,
+        //           size: 30,
+        //         ),
+        //   onPressed: () {
+        //     controller.isOpened.value
+        //         ? controller.isOpened.value = false
+        //         : controller.isOpened.value = true;
+        //   },
+        // ),
       ),
       child: Container(
         margin: EdgeInsets.only(
