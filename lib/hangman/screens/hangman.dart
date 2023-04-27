@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:spd/hangman/components/figure.dart';
 import 'package:spd/hangman/components/hidden_words.dart';
+import 'package:spd/hangman/screens/score_screen.dart';
 
 import '../../constants/colors.dart';
 import '../controller/hangman_controller.dart';
@@ -123,7 +124,7 @@ class Hangman extends StatelessWidget {
                             ),
                           ),
                           GestureDetector(
-                            onTap: () {},
+                            onTap: () => Get.to(() => const ScoreScreen()),
                             child: const Icon(
                               CupertinoIcons.book_solid,
                               size: 40,

@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 
 class HomeScreenController extends GetxController
     with GetSingleTickerProviderStateMixin {
-  RxBool isOpened = false.obs;
+  // RxBool isOpened = false.obs;
 
   late AnimationController animationController = AnimationController(
     vsync: this,
