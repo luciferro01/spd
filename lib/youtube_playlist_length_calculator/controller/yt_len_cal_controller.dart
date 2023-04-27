@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import 'package:spd/constants/api_key.dart';
+import '../../keys.dart';
 import 'dart:convert';
 import 'dart:core';
 import '../models/youtube_playlist_data.dart';
