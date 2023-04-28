@@ -12,4 +12,5 @@ class Routes {
   static const String qrcodeScanner = "/QRCodeScanner";
   static const String ticTacToe = "/TicTacToe";
   static const String hangman = "/Hangman";
+  static const String developer = "/Developers";
 }
