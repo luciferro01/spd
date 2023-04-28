@@ -4,6 +4,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:spd/constants/gradients.dart';
 import 'package:spd/constants/image_strings.dart';
 import 'package:spd/developer_contribution/models/developer_contribution_model.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../constants/colors.dart';
 
@@ -175,28 +177,38 @@ class DeveloperTile extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      launchUrl(
+                        Uri.parse(e.linkedIn),
+                      );
+                    },
                     child: SvgPicture.asset(
                       linkedInSvg,
                       height: width * 0.1,
                     ),
                   ),
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      launchUrl(Uri.parse(e.instagram));
+                    },
                     child: SvgPicture.asset(
                       instagramSvg,
                       height: width * 0.1,
                     ),
                   ),
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      launchUrl(Uri.parse(e.gitHub));
+                    },
                     child: SvgPicture.asset(
                       gitHubSvg,
                       height: width * 0.09,
                     ),
                   ),
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      launchUrl(Uri.parse(e.twitter));
+                    },
                     child: SvgPicture.asset(
                       twitterSvg,
                       height: width * 0.1,
@@ -212,7 +224,49 @@ class DeveloperTile extends StatelessWidget {
         ),
       ),
       back: Container(
-        child: const Text('Hello'),
+        // decoration: BoxDecoration(
+        //   color: Colors.amber,
+        padding: const EdgeInsets.all(20),
+        decoration: BoxDecoration(
+          gradient: const LinearGradient(
+            colors: Gradients.gentleCare,
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+          boxShadow: const [
+            BoxShadow(
+              color: softBlack,
+              blurRadius: 4,
+              blurStyle: BlurStyle.normal,
+              offset: Offset(2, 6),
+            )
+          ],
+          borderRadius: BorderRadius.circular(20),
+          color: Colors.amber,
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            // const Spacer(
+            //   flex: 8,
+            // ),
+            AnimatedTextKit(
+              displayFullTextOnTap: true,
+              animatedTexts: [
+                TyperAnimatedText(
+                  e.description,
+                  textStyle: const TextStyle(fontSize: 24),
+                  textAlign: TextAlign.justify,
+                  speed: const Duration(milliseconds: 50),
+                )
+              ],
+            ),
+            // const Spacer(
+            //   flex: 3,
+            // ),
+          ],
+        ),
       ),
     );
   }
