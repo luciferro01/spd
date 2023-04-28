@@ -24,6 +24,10 @@ const List appList = [
     'appName': 'Chat GPT',
     'description': 'Your personal writing assistant on you fingers'
   },
+  {
+    'appName': 'Developers Contribution',
+    'description': 'Meet the developers who developed this wonderful app',
+  }
 
   // {
   //   'appName': 'Dall -E',

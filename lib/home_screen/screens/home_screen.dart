@@ -54,6 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
       route: Routes.quickLinks,
       gradient: Gradients.aquaSplash,
     ),
+
     // const HomeScreenCards(
     //   index: 3,
     //   image: onbScreen1,
@@ -86,12 +87,12 @@ class _HomeScreenState extends State<HomeScreen> {
     //   route: Routes.chatPage,
     //   gradient: Gradients.viciousStance,
     // ),
-    // const HomeScreenCards(
-    //   index: 9,
-    //   image: onbScreen1,
-    //   route: Routes.qrcodeScanner,
-    //   gradient: Gradients.happyFisher,
-    // ),
+    const HomeScreenCards(
+      index: 6,
+      image: onbScreen1,
+      route: Routes.developer,
+      gradient: Gradients.happyFisher,
+    ),
   ];
 
   var controller = Get.put(HomeScreenController());
