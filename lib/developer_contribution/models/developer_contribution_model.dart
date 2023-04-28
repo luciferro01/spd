@@ -10,6 +10,7 @@ class DeveloperContributionModel {
   final String twitter;
   final String gitHub;
   final String role;
+  final String description;
 
   DeveloperContributionModel({
     required this.name,
@@ -21,5 +22,6 @@ class DeveloperContributionModel {
     required this.linkedIn,
     required this.twitter,
     required this.gitHub,
+    required this.description,
   });
 }
