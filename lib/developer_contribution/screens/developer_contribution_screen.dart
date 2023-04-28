@@ -22,9 +22,7 @@ class DeveloperContributionScreen extends StatelessWidget {
       navigationBar: const CupertinoNavigationBar(
         middle: Text(
           'Developers',
-          style: TextStyle(
-            fontStyle: FontStyle.italic,
-          ),
+          style: TextStyle(fontStyle: FontStyle.italic, fontSize: 26),
         ),
       ),
       resizeToAvoidBottomInset: true,

@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_typing_uninitialized_variables
+
 import 'dart:convert';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/cupertino.dart';
@@ -67,7 +69,7 @@ class _ChatPageState extends State<ChatPage> {
 
   @override
   Widget build(BuildContext context) {
-    MediaQueryData mediaQuery = MediaQuery.of(context);
+    // MediaQueryData mediaQuery = MediaQuery.of(context);
     return CupertinoPageScaffold(
       backgroundColor: backgroundColor,
       navigationBar: CupertinoNavigationBar(
@@ -82,7 +84,7 @@ class _ChatPageState extends State<ChatPage> {
           children: [
             Expanded(
               child: _messages.isEmpty
-                  ? flexCardGpt(
+                  ? const flexCardGpt(
                       icon: CupertinoIcons.lightbulb_fill,
                       color: softBlack,
                       text: "A chatbot powered by OpenAI's GPT-3")
@@ -99,7 +101,7 @@ class _ChatPageState extends State<ChatPage> {
             ),
             Row(
               children: [
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
                 _buildInput(),
@@ -166,11 +168,11 @@ class _ChatPageState extends State<ChatPage> {
         maxLines: 1,
         clearButtonMode: OverlayVisibilityMode.editing,
         placeholder: "Type a message",
-        textAlign: TextAlign.start, padding: EdgeInsets.all(10),
+        textAlign: TextAlign.start, padding: const EdgeInsets.all(10),
         // showCursor: false,
         cursorColor: softBlack,
         cursorHeight: defaultPadding,
-        placeholderStyle: TextStyle(
+        placeholderStyle: const TextStyle(
             color: softBlack, fontSize: 16, fontWeight: FontWeight.w400),
         decoration: BoxDecoration(
           color: softwhite,
@@ -382,7 +384,7 @@ class ChatMessageWidget extends StatelessWidget {
                         )
                       : Text(
                           text,
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: userTextColor,
                             fontSize: 16,
                           ),

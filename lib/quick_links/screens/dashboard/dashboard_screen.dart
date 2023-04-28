@@ -4,8 +4,6 @@ import 'package:spd/quick_links/screens/dashboard/components/recent.dart';
 
 import '../../../constants/paddings.dart';
 import '../../controllers/recent_links_controller.dart';
-import '../../responsive.dart';
-import 'components/header.dart';
 
 import 'components/recent_files.dart';
 

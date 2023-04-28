@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:spd/gpt_advanced/main.dart';
-import 'package:spd/gpt_assistant/chat_gpt/screens/chat_gpt_screen.dart';
+
 import 'package:spd/tic_tac_toe/screens/tic_tac_toe_screen.dart';
 
 import '../../../../constants/colors.dart';
@@ -28,7 +28,7 @@ class SideMenu extends StatelessWidget {
           title: "Gpt for students",
           svgSrc: "assets/icons/menu_tran.svg",
           press: () {
-            Get.to(() => ChatPage());
+            Get.to(() => const ChatPage());
           },
         ),
         DrawerListTile(

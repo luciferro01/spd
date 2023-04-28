@@ -1,11 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:spd/quick_links/models/link.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../constants/colors.dart';
-import '../../../../constants/paddings.dart';
+
 import '../../../responsive.dart';
 
 class FileInfoCard extends StatelessWidget {
@@ -46,7 +45,7 @@ class FileInfoCard extends StatelessWidget {
                 Container(
                   height: 40,
                   width: 40,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.all(Radius.circular(10)),
                   ),
@@ -64,7 +63,7 @@ class FileInfoCard extends StatelessWidget {
                     fontWeight: FontWeight.w500,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 1,
                 )
               ],
@@ -76,7 +75,7 @@ class FileInfoCard extends StatelessWidget {
                 info.subtitle!,
                 maxLines: Responsive.isDesktop(context) ? 6 : 4,
                 overflow: TextOverflow.ellipsis,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 13,
                 ),
               ),

@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:spd/gpt_advanced/main.dart';
+
 import 'package:spd/quick_links/controllers/recent_links_controller.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -34,7 +34,8 @@ class AllLinks extends StatelessWidget {
                   "Quick links",
                   style: Theme.of(context).textTheme.titleMedium,
                 ),
-                footer: Text("NOTE : None of the links are affiliated with us"),
+                footer: const Text(
+                    "NOTE : None of the links are affiliated with us"),
                 children: demoLinks
                     .map<CupertinoListTile>((e) => CupertinoListTile(
                           title: Text(e.title!),

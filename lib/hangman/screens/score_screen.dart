@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:spd/onboarding_screen/data/item_data.dart';
+
 // import 'package:get/get.dart';
 // import 'package:spd/hangman/controller/hangman_controller.dart';
 
@@ -16,8 +16,8 @@ class ScoreScreen extends StatelessWidget {
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
 
-    final database = openDB();
-    var query = scores(database);
+    // final database = openDB();
+    // var query = scores(database);
 
     return CupertinoPageScaffold(
       backgroundColor: ticTacToeBackgroundColor,

@@ -24,7 +24,7 @@ class RecentLinksController extends GetxController {
     if (list != null) {
       recentLinks =
           demoLinks.where((element) => list.contains(element.title)).toList();
-      print("list updated");
+      ("list updated");
     } else {
       print("list is null");
     }

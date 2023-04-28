@@ -1,8 +1,7 @@
+// ignore_for_file: prefer_typing_uninitialized_variables
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:spd/quick_links/controllers/recent_links_controller.dart';
-import 'package:spd/quick_links/models/link.dart';
 
 import '../../../../constants/paddings.dart';
 
@@ -19,7 +18,7 @@ class Recent extends StatelessWidget {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
 
-    print("rebuild recent links");
+    debugPrint("rebuild recent links");
     return Column(
       children: [
         Row(

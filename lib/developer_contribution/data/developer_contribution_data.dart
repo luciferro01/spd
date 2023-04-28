@@ -17,7 +17,7 @@ List<DeveloperContributionModel> developerContributionData = [
         'Hey Guys I am Cross Platform Application Developer with my main Tech Stack as Flutter and Firebase. Initially I did not like App Development but as soon as I deep dive into this ocean it made me going crazy. I am now completely fall in love with Flutter and App Development. I basically use Flutter as a framework for my app Development and currently learning backend. I am also learning Web Development in my free time.',
   ),
   DeveloperContributionModel(
-    profileImage: mohilProfile,
+    profileImage: kunalProfile,
     designation: 'Senior Flutter Developer',
     role: 'Team Member',
     currentjob: '2nd Year',
@@ -30,8 +30,8 @@ List<DeveloperContributionModel> developerContributionData = [
         'Hey Guys I am Cross Platform Application Developer with my main Tech Stack as Flutter and Firebase. Initially I did not like App Development but as soon as I deep dive into this ocean it made me going crazy. I am now completely fall in love with Flutter and App Development. I basically use Flutter as a framework for my app Development and currently learning backend. I am also a Front End Web Developer ',
   ),
   DeveloperContributionModel(
-    profileImage: mohilProfile,
-    designation: 'Cross Platform App Developer, Web Developer',
+    profileImage: ayushProfile,
+    designation: 'Senior Flutter Developer',
     role: 'Team Member',
     currentjob: '2nd Year',
     instagram: 'https://instagram.com/ayushbansal_01/',
