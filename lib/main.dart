@@ -164,11 +164,11 @@ class MyApp extends StatelessWidget {
         page: () => ErrorScreen(),
       ),
       // home: HomeScreen(),
-      home: SplashScreen(),
+      // home: SplashScreen(),
       // home: YtLengthCalculator(),
       // home: SideMenu(),
       // home: SideMenu(),
-      // home: ChatGpt(),
+      home: ChatPage(),
     );
   }
 }

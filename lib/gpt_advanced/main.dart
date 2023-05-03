@@ -37,10 +37,10 @@ Future<String> generateResponse(context, String prompt) async {
     body: json.encode({
       "model": "text-davinci-002",
       "prompt": prompt,
-      'temperature': 0.9,
-      'max_tokens': Responsive.isDesktop(context) ? 700 : 150,
-      'top_p': 1.0,
-      'frequency_penalty': 0.0,
+      'temperature': 0.7,
+      'max_tokens': Responsive.isDesktop(context) ? 700 : 100,
+      'top_p': 1,
+      'frequency_penalty': 0.5,
       'presence_penalty': 0.6,
     }),
   );
@@ -270,20 +270,11 @@ class flexCardGpt extends StatelessWidget {
             color: color,
           ),
         ),
-        Padding(
-          padding: EdgeInsets.symmetric(
-              vertical: 8,
-              horizontal: MediaQuery.of(context).size.width < 800
-                  ? MediaQuery.of(context).size.width * 0.14
-                  : MediaQuery.of(context).size.width * 0.02),
-          child: Text(
-            text,
-            textAlign: TextAlign.center,
-            style: const TextStyle(
-                color: userTextColor,
-                fontSize: 16,
-                fontWeight: FontWeight.bold),
-          ),
+        Text(
+          text,
+          textAlign: TextAlign.center,
+          style: const TextStyle(
+              color: userTextColor, fontSize: 16, fontWeight: FontWeight.bold),
         ),
         SizedBox(
           height: MediaQuery.of(context).size.width * 0.01,
@@ -309,10 +300,11 @@ class ChatMessageWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 10.0),
-      padding: chatMessageType == ChatMessageType.bot
+      padding: Responsive.isMobile(context)
           ? EdgeInsets.only(
-              left: 16.0, right: MediaQuery.of(context).size.width * 0.4)
-          : EdgeInsets.only(right: MediaQuery.of(context).size.width * 0.4),
+              left: 10.0, right: MediaQuery.of(context).size.width * 0.2)
+          : EdgeInsets.only(
+              left: 20.0, right: MediaQuery.of(context).size.width * 0.4),
       color: backgroundColor,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,

@@ -78,6 +78,7 @@ class FileInfoCard extends StatelessWidget {
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(
                   fontSize: 13,
+                  fontFamily: 'sans-serif',
                 ),
               ),
             ),
